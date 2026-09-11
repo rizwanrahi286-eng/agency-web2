@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en" class="plus_jakarta_sans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weblitex | Web Development &amp; WordPress Engineering Agency</title>
+  <meta name="description" content="Weblitex delivers premier custom web development and high-performance WordPress solutions for ambitious businesses globally and across Pakistan.">
+  <meta name="keywords" content="Weblitex, web development Umerkot, custom web development, WordPress development, web agency Pakistan">
+  <meta name="author" content="Weblitex">
+  <link rel="canonical" href="https://weblitex.com">
+  
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A0F1D">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Weblitex | Web Development &amp; WordPress Agency">
+  <meta property="og:description" content="Premier custom web development and high-performance WordPress solutions crafted with precision.">
+  <meta property="og:url" content="https://weblitex.com">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://weblitex.com/og-image.png">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Sticky Navigation -->
+  <nav class="navbar" id="mainNav">
+    <div class="nav-container" id="navContainer">
+      <a class="logo" href="index.html">Webli<span>tex</span></a>
+      <ul class="nav-links">
+        <li><a href="#AboutUs">About Us</a></li>
+        <li><a href="#Reference">Reference</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
+      
+      <!-- Update Bell -->
+      <div class="UpdateBell-wrap">
+        <button type="button" class="UpdateBell-bell" id="bellBtn" aria-expanded="false" aria-haspopup="true" aria-label="Updates" title="Updates">
+          <i class="fas fa-bell"></i>
+          <span class="UpdateBell-dot"></span>
+        </button>
+        <!-- Bell Panel Dropdown -->
+        <div class="UpdateBell-panel" id="bellPanel">
+          <div class="UpdateBell-head">
+            <b>Latest Updates</b>
+            <span>Weblitex</span>
+          </div>
+          <a href="services.html" class="UpdateBell-item">
+            <h4><i class="fas fa-sparkles"></i> Dedicated Services Page</h4>
+            <p>Explore our specialized WordPress and Custom Web Development offerings!</p>
+            <span class="UpdateBell-go">View services <i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="#projects" class="UpdateBell-item">
+            <h4><i class="fas fa-rocket"></i> New Projects Added</h4>
+            <p>Check out our latest restaurant, blog & healthcare platforms in the portfolio!</p>
+            <span class="UpdateBell-go">View projects <i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+
+      <a href="#kontakt" class="nav-btn">Contact Us</a>
+      
+      <button class="menu-btn" id="menuToggle" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer / Dropdown -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-links">
+        <li><a href="#AboutUs" class="m-link">About Us</a></li>
+        <li><a href="#Reference" class="m-link">Reference</a></li>
+        <li><a href="services.html" class="m-link">Services</a></li>
+        <li><a href="#projects" class="m-link">Projects</a></li>
+      </ul>
+      <a href="#kontakt" class="mobile-btn m-link">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="rating-container">
+      <div class="stars-row">
+        <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+      </div>
+      <div class="rating-text">+5 projects actively managed</div>
+    </div>
+
+    <!-- Infinite Avatars Marquee -->
+    <div class="customers-scroll">
+      <div class="scroll-gradient-left"></div>
+      <div class="scroll-gradient-right"></div>
+      <div class="customers-track">
+        <div class="customer-avatar"><img src="https://i.pravatar.cc/24?img=1" alt="Client Avatar"></div>
+        <div class="customer-avatar"><img src="https://i.pravatar.cc/24?img=2" alt="Client Avatar"></div>
+        <div class="customer-avatar"><img src="https://i.pravatar.cc/24?img=3" alt="Client Avatar"></div>
+        <div class="customer-avatar"><img src="https://i.pravatar.cc/24?img=4" alt="Client Avatar"></div>
+        <div class="customer-avatar"><img src="https://i.pravatar.cc/24?img=5" alt="Client Avatar"></div>
+        <div class="customer-avatar"><img src="https://i.pravatar.cc/24?img=6" alt="Client Avatar"></div>
+        <!-- Duplicated for seamless loop -->
+        <div class="customer-avatar"><img src="https://i.pravatar.cc/24?img=1" alt="Client Avatar"></div>
+        <div class="customer-avatar"><img src="https://i.pravatar.cc/24?img=2" alt="Client Avatar"></div>
+        <div class="customer-avatar"><img src="https://i.pravatar.cc/24?img=3" alt="Client Avatar"></div>
+        <div class="customer-avatar"><img src="https://i.pravatar.cc/24?img=4" alt="Client Avatar"></div>
+        <div class="customer-avatar"><img src="https://i.pravatar.cc/24?img=5" alt="Client Avatar"></div>
+        <div class="customer-avatar"><img src="https://i.pravatar.cc/24?img=6" alt="Client Avatar"></div>
+      </div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <h1 class="hero-title"><span class="hero-title-top">More trust through</span> <br> <span class="hero-title-gradient">Better websites</span></h1>
+      <p class="hero-subtitle">At Weblitex, we build websites that inspire confidence, engage audiences, and turn online presence into real business growth.</p>
+      <div class="hero-buttons">
+        <a href="#kontakt" class="btn-primary">
+          <span class="live-indicator"></span>Currently available
+        </a>
+        <a href="#kontakt" class="btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects Section (Carousel with 5 Projects) -->
+  <section class="projects" id="projects">
+    <div class="section-header">
+      <h2 class="section-title">Our <span class="span1">Projects</span></h2>
+    </div>
+
+    <div class="carousel-container">
+      <div class="carousel" id="projectCarousel">
+        
+        <!-- Project 1: Restaurant -->
+        <div class="project-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Bistro — Restaurant Website">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Bistro — Restaurant Website</h3>
+            <p class="card-description">A modern and elegant restaurant website designed for Bistro, featuring an interactive menu presentation, online table reservation system, responsive interface, and local search optimization.</p>
+            <div class="card-tags">
+              <span class="card-tag">Restaurant Website</span>
+              <span class="card-tag">Bistro</span>
+              <span class="card-tag">Web Development</span>
+            </div>
+            <a href="https://bistro-restaurant-ten.vercel.app/" target="_blank" rel="noopener" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Project 2: Blogging Website (blogs.stc.edu.pk) -->
+        <div class="project-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80" alt="STC Blog — Educational & Technology Publication Portal">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">STC Blog — Educational & Tech Publication</h3>
+            <p class="card-description">An educational and technology blogging platform engineered for Super Sys-Tech Computers Centre (blogs.stc.edu.pk), providing students and tech enthusiasts with insightful articles, coding tutorials, and institutional news.</p>
+            <div class="card-tags">
+              <span class="card-tag">blogs.stc.edu.pk</span>
+              <span class="card-tag">Tech Blog</span>
+              <span class="card-tag">Education Portal</span>
+            </div>
+            <a href="https://blogs.stc.edu.pk" target="_blank" rel="noopener" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Project 3: Healthcare / SaaS -->
+        <div class="project-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Clinic-Rev — Medical Billing Website">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Clinic-Rev — Medical Billing Website</h3>
+            <p class="card-description">A modern and professional medical billing website developed for a US-based healthcare billing company. The project focuses on a clean user experience, responsive design, service presentation, and a trustworthy corporate look tailored to the healthcare industry.</p>
+            <div class="card-tags">
+              <span class="card-tag">US Healthcare</span>
+              <span class="card-tag">Medical Billing</span>
+              <span class="card-tag">Web Portal</span>
+            </div>
+            <a href="https://clinicrev.vercel.app/" target="_blank" rel="noopener" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Project 4: E-Commerce Store (NovaCart) -->
+        <div class="project-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800&q=80" alt="NovaCart — Modern E-Commerce Platform">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">NovaCart — Modern E-Commerce Platform</h3>
+            <p class="card-description">A high-conversion online store developed with custom WooCommerce architecture, instantaneous product filtering, multi-currency checkout, and integrated shipping tracking.</p>
+            <div class="card-tags">
+              <span class="card-tag">WooCommerce</span>
+              <span class="card-tag">E-Commerce</span>
+              <span class="card-tag">Custom Checkout</span>
+            </div>
+            <a href="novacart.html" target="_blank" rel="noopener" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Project 5: Real Estate Portal (Apex Living) -->
+        <div class="project-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Apex Living — Luxury Real Estate Portal">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Apex Living — Luxury Real Estate Portal</h3>
+            <p class="card-description">A premier real estate web portal featuring interactive property tours, custom architectural galleries, dynamic search filters, and direct WhatsApp lead capture.</p>
+            <div class="card-tags">
+              <span class="card-tag">Real Estate</span>
+              <span class="card-tag">Custom Web App</span>
+              <span class="card-tag">Interactive UI</span>
+            </div>
+            <a href="apex-living.html" target="_blank" rel="noopener" class="card-link">View Project <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Carousel Controls (5 Dots for 5 Projects) -->
+    <div class="carousel-controls">
+      <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Previous project"><i class="fas fa-chevron-left"></i></button>
+      <div class="carousel-dots" id="carouselDots">
+        <div class="dot active" data-index="0"></div>
+        <div class="dot" data-index="1"></div>
+        <div class="dot" data-index="2"></div>
+        <div class="dot" data-index="3"></div>
+        <div class="dot" data-index="4"></div>
+      </div>
+      <button class="carousel-btn next-btn" id="nextBtn" aria-label="Next project"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section class="social-media-section" id="AboutUs">
+    <div class="social-media-container">
+      <div class="social-left">
+        <div class="social-tab slide-in-left">About Us</div>
+        <h2 class="social-title slide-in-left">
+          <span class="gradient-text">Web Development Mastery</span> Born in Umerkot
+        </h2>
+      </div>
+      <div class="social-right">
+        <div class="social-content">
+          <p class="slide-in-right">At Weblitex, we believe that true web development mastery isn't about where you're from — it's about the quality of your craft. For us, Umerkot is our foundation. This historic city has shaped our work ethic, values, and commitment to excellence.</p>
+          <p class="slide-in-right">As a Web Development Agency in Umerkot, Sindh, Pakistan we see every day how essential a strong digital presence has become. In today’s market, only those who are visible online can grow sustainably. We make sure you don’t just gain visibility but also connect with the right audience.</p>
+        </div>
+        <a href="#kontakt" class="social-cta slide-in-right">
+          <span>Let’s Make It Happen</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Counter Achievements Sub-Section -->
+    <section class="achievements-section">
+      <div class="container">
+        <div class="grid">
+          <div class="achievement-card">
+            <div class="counter"><span class="counter-value" data-target="25">25</span>+</div>
+            <h3>Web Projects Delivered</h3>
+            <p>Successfully launched websites for clients across industries.</p>
+          </div>
+          <div class="achievement-card">
+            <div class="counter"><span class="counter-value" data-target="150">150</span>k+</div>
+            <h3>Lines of Code Written</h3>
+            <p>Optimized, clean, and maintainable code for every project.</p>
+          </div>
+          <div class="achievement-card">
+            <div class="counter"><span class="counter-value" data-target="80">80</span>k+</div>
+            <h3>Users Reached</h3>
+            <p>Web solutions designed to handle high traffic efficiently.</p>
+          </div>
+          <div class="achievement-card">
+            <div class="counter"><span class="counter-value" data-target="100">100</span>%</div>
+            <h3>Client Satisfaction</h3>
+            <p>Dedicated focus on quality and client success.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- Testimonials / References Section (Landscape Cards) -->
+  <section class="testimonials-section" id="Reference">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:40px">
+        <div class="tab">References</div>
+      </div>
+      <h2 class="heading">What our <span class="highlight">Clients Say</span></h2>
+      
+      <div class="marquee-container">
+        <div class="marquee-content">
+          
+          <!-- Client Card 1 (Landscape) -->
+          <div class="testimonial-card landscape-card">
+            <div class="client-profile-col">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Dr. Harris Sterling" class="profile-img">
+              <div class="profile-info">
+                <h3>Dr. Harris Sterling</h3>
+                <p>Director, Sterling Medical UK</p>
+                <div class="client-stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="landscape-divider"></div>
+            <div class="client-quote-col">
+              <div class="quote-mark">“</div>
+              <p class="testimonial-text">"The new web platform transformed how patients engage with our clinics. Speed is instantaneous and our consultation bookings jumped by 85% within weeks."</p>
+            </div>
+          </div>
+
+          <!-- Client Card 2 (Landscape) -->
+          <div class="testimonial-card landscape-card">
+            <div class="client-profile-col">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Zainab Mir" class="profile-img">
+              <div class="profile-info">
+                <h3>Zainab Mir</h3>
+                <p>Founder &amp; CEO, Zariyah Apparel</p>
+                <div class="client-stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="landscape-divider"></div>
+            <div class="client-quote-col">
+              <div class="quote-mark">“</div>
+              <p class="testimonial-text">"Exceptional craft and design sensibility. They captured our brand's luxury identity perfectly while keeping the store lightning-fast on mobile devices."</p>
+            </div>
+          </div>
+
+          <!-- Client Card 3 (Landscape) -->
+          <div class="testimonial-card landscape-card">
+            <div class="client-profile-col">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Felix Moreau" class="profile-img">
+              <div class="profile-info">
+                <h3>Felix Moreau</h3>
+                <p>Co-Founder, Alpine Hospitality</p>
+                <div class="client-stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="landscape-divider"></div>
+            <div class="client-quote-col">
+              <div class="quote-mark">“</div>
+              <p class="testimonial-text">"From initial wireframes to deployment, the team showed pure professionalism. Our guests love the frictionless reservation flow and fast menu browsing."</p>
+            </div>
+          </div>
+
+          <!-- Client Card 4 (Landscape) -->
+          <div class="testimonial-card landscape-card">
+            <div class="client-profile-col">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Ayesha Siddiqui" class="profile-img">
+              <div class="profile-info">
+                <h3>Ayesha Siddiqui</h3>
+                <p>Managing Partner, Apex Advisory</p>
+                <div class="client-stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="landscape-divider"></div>
+            <div class="client-quote-col">
+              <div class="quote-mark">“</div>
+              <p class="testimonial-text">"Clear communication, clean code, and zero delays. Our corporate partners regularly praise the speed and refined elegance of our website."</p>
+            </div>
+          </div>
+
+          <!-- Duplicated for continuous smooth marquee -->
+          <div class="testimonial-card landscape-card">
+            <div class="client-profile-col">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Dr. Harris Sterling" class="profile-img">
+              <div class="profile-info">
+                <h3>Dr. Harris Sterling</h3>
+                <p>Director, Sterling Medical UK</p>
+                <div class="client-stars">★★★★★</div>
+              </div>
+            </div>
+            <div class="landscape-divider"></div>
+            <div class="client-quote-col">
+              <div class="quote-mark">“</div>
+              <p class="testimonial-text">"The new web platform transformed how patients engage with our clinics. Speed is instantaneous and our consultation bookings jumped by 85% within weeks."</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support / Services Section -->
+  <section class="support-section" id="Services">
+    <div class="container">
+      <h2 class="support-heading">Who can we <span class="accent">support?</span></h2>
+      <div class="tabs-container">
+        <div class="tabs-list" role="tablist">
+          <button class="tab-trigger active" role="tab" aria-selected="true" data-target="restaurateurs">
+            <i class="fas fa-utensils"></i>
+            <span>Restaurateurs</span>
+          </button>
+          <button class="tab-trigger" role="tab" aria-selected="false" data-target="real-estate">
+            <i class="fas fa-house"></i>
+            <span>Real Estate Agents</span>
+          </button>
+          <button class="tab-trigger" role="tab" aria-selected="false" data-target="craft-businesses">
+            <i class="fas fa-wrench"></i>
+            <span>Craft Businesses</span>
+          </button>
+          <button class="tab-trigger" role="tab" aria-selected="false" data-target="consultants">
+            <i class="fas fa-users"></i>
+            <span>Consultants &amp; Coaches</span>
+          </button>
+        </div>
+
+        <div class="tab-content" role="tabpanel">
+          <!-- Tab 1 -->
+          <div class="tab-panel active" id="restaurateurs">
+            <div class="content-item">
+              <h4>Problem</h4>
+              <p>Your restaurant is amazing, but online it’s invisible. Menus are confusing, reservations frustrating, and potential guests don’t even know you exist.</p>
+            </div>
+            <div class="content-item">
+              <h4>Our Solution</h4>
+              <p>We provide a modern, mobile-friendly restaurant website with easy online reservations, visually rich menus, and local SEO to ensure your restaurant reaches and delights more guests.</p>
+            </div>
+          </div>
+
+          <!-- Tab 2 -->
+          <div class="tab-panel" id="real-estate">
+            <div class="content-item">
+              <h4>Problem</h4>
+              <p>As a real estate agent, your listings get lost online. Limited visibility and generic content mean serious buyers never see your properties.</p>
+            </div>
+            <div class="content-item">
+              <h4>Our Solution</h4>
+              <p>We provide immersive virtual tours, engaging property content, and targeted online ads to reach the right buyers, increasing leads and sales efficiently.</p>
+            </div>
+          </div>
+
+          <!-- Tab 3 -->
+          <div class="tab-panel" id="craft-businesses">
+            <div class="content-item">
+              <h4>Problem</h4>
+              <p>Your work impresses in person, but online it feels like a brochure lost in the crowd. Visitors leave before they even understand your value.</p>
+            </div>
+            <div class="content-item">
+              <h4>Our Solution</h4>
+              <p>We provide a visually rich website that highlights your process and finished products, paired with story-driven content that attracts clients who appreciate quality craftsmanship and premium services.</p>
+            </div>
+          </div>
+
+          <!-- Tab 4 -->
+          <div class="tab-panel" id="consultants">
+            <div class="content-item">
+              <h4>Problem</h4>
+              <p>You have valuable expertise, but struggle to stand out and attract clients in a crowded online space.</p>
+            </div>
+            <div class="content-item">
+              <h4>Our Solution</h4>
+              <p>We position you as a thought leader with strategic content: educational webinars, insightful articles, and client success stories that build trust and bring in your ideal clients.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="kontakt">
+    <div class="container">
+      <div style="text-align:center;max-width:48rem;margin:0 auto 4rem auto">
+        <h2 class="contact-heading">Get In <span class="accent">Touch</span></h2>
+        <p class="contact-subheading">Ready to scale your business with custom web development or modern WordPress engineering? Send us a message and our team will get back to you promptly.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h3>Contact Details</h3>
+          <div class="contact-detail">
+            <i class="fas fa-map-marker-alt contact-icon"></i>
+            <div class="contact-text">
+              <h4>Location</h4>
+              <p>Umerkot, Sindh, Pakistan</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-envelope contact-icon"></i>
+            <div class="contact-text">
+              <h4>E-mail</h4>
+              <a href="mailto:rizwanrahi286@gmail.com">rizwanrahi286@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-phone contact-icon"></i>
+            <div class="contact-text">
+              <h4>Telephone number</h4>
+              <a href="tel:+923122412719">+92 312 2412719</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-clock contact-icon"></i>
+            <div class="contact-text">
+              <h4>Working Hours</h4>
+              <p>Mon – Sat: 9:00 AM – 7:00 PM (PKT)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="contact-form">
+          <h3>Send Us a Message</h3>
+          <!-- Hidden iframe target enables seamless native submission without CORS blocks or leaving the page -->
+          <iframe name="hidden_contact_iframe" id="hidden_contact_iframe" style="display:none;"></iframe>
+          <form id="contactForm" action="https://formsubmit.co/rizwanrahi286@gmail.com" method="POST" target="hidden_contact_iframe" class="space-y-6">
+            <!-- FormSubmit Anti-Spam & Routing Config -->
+            <input type="hidden" name="_subject" id="subjectInput" value="New Project Inquiry - Weblitex">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_replyto" id="replytoInput" value="">
+            
+            <div class="form-group">
+              <label for="name">Your Name*</label>
+              <input type="text" id="name" required placeholder="e.g. John Doe" name="name" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail Address*</label>
+              <input type="email" id="email" required placeholder="your.email@example.com" name="email" autocomplete="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g. name@domain.com)">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone / WhatsApp (Optional)</label>
+              <input type="tel" id="phone" placeholder="+92 300 1234567" name="phone">
+            </div>
+            <div class="form-group">
+              <label for="service">Service Interested In</label>
+              <select id="service" name="service" class="form-select-input">
+                <option value="WordPress Development">WordPress Development</option>
+                <option value="Custom Web Development">Custom Web Development</option>
+                <option value="WooCommerce / E-Commerce">WooCommerce / E-Commerce</option>
+                <option value="Speed Optimization">Speed Optimization &amp; Maintenance</option>
+                <option value="Other Consultation">Other Consultation</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Project Details*</label>
+              <textarea id="message" name="message" required placeholder="Tell us about your project requirements, goals, and desired timeline..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
+            <p id="formMessage" style="margin-top:14px;text-align:center;font-weight:600;font-size:0.95rem;"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Redesigned Modern Agency Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand & Identity -->
+        <div class="footer-col brand-col">
+          <a class="footer-logo" href="index.html">
+            <div class="logo-fallback">Webli<span>tex</span></div>
+          </a>
+          <p class="footer-bio">
+            High-performance custom web development and tailored WordPress engineering. Proudly rooted in Umerkot, delivering world-class digital craftsmanship globally.
+          </p>
+          <div class="footer-location-badge">
+            <i class="fas fa-map-marker-alt"></i> Umerkot, Sindh, Pakistan
+          </div>
+        </div>
+
+        <!-- Col 2: Services -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Core Services</h4>
+          <ul class="footer-col-links">
+            <li><a href="services.html#wordpress"><i class="fas fa-angle-right"></i> WordPress Development</a></li>
+            <li><a href="services.html#custom-web"><i class="fas fa-angle-right"></i> Custom Web Development</a></li>
+            <li><a href="services.html#wordpress"><i class="fas fa-angle-right"></i> WooCommerce Systems</a></li>
+            <li><a href="services.html#custom-web"><i class="fas fa-angle-right"></i> Full-Stack Web Apps</a></li>
+            <li><a href="services.html"><i class="fas fa-angle-right"></i> Performance &amp; SEO Audit</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Navigation -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-col-links">
+            <li><a href="index.html#home"><i class="fas fa-angle-right"></i> Home</a></li>
+            <li><a href="index.html#AboutUs"><i class="fas fa-angle-right"></i> About Us</a></li>
+            <li><a href="services.html"><i class="fas fa-angle-right"></i> Services Overview</a></li>
+            <li><a href="index.html#projects"><i class="fas fa-angle-right"></i> Featured Work</a></li>
+            <li><a href="index.html#Reference"><i class="fas fa-angle-right"></i> Client Reviews</a></li>
+            <li><a href="index.html#kontakt"><i class="fas fa-angle-right"></i> Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact & Socials -->
+        <div class="footer-col contact-col">
+          <h4 class="footer-col-title">Get in Touch</h4>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:rizwanrahi286@gmail.com">rizwanrahi286@gmail.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <a href="tel:+923122412719">+92 312 2412719</a>
+          </div>
+          <div class="footer-socials">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">
+          &copy; 2025 <strong>Weblitex</strong>. All rights reserved.
+        </div>
+        <div class="footer-legal">
+          <a href="javascript:void(0)" id="openPrivacyPolicyBtn">Privacy Policy</a>
+          <span class="dot-sep">•</span>
+          <a href="javascript:void(0)" id="openCookieSettingsBtn">Cookie Settings</a>
+          <span class="dot-sep">•</span>
+          <a href="#">Terms of Service</a>
+          <span class="dot-sep">•</span>
+          <span>Engineered in Umerkot</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent Landscape Card (Bottom Left) -->
+  <div class="cookie-consent" id="cookieConsent" role="dialog" aria-modal="true" aria-labelledby="cookieTitle">
+    <button class="cookie-close-btn" id="closeCookieBtn" aria-label="Close Cookie Notice">&times;</button>
+    
+    <div class="cookie-header">
+      <div class="cookie-icon-wrap">
+        <i class="fas fa-cookie-bite cookie-icon"></i>
+      </div>
+      <div class="cookie-header-text">
+        <div class="cookie-badge"><i class="fas fa-shield-alt"></i> Privacy &amp; Cookies</div>
+        <h4 class="cookie-title" id="cookieTitle">Cookie Preferences</h4>
+      </div>
+    </div>
+    
+    <p class="cookie-content">
+      We use cookies to optimize site performance, speed, and security in accordance with our 
+      <a href="javascript:void(0)" class="cookie-policy-link" id="openPrivacyModalFromCookie">Privacy Policy</a>.
+    </p>
+    
+    <div class="cookie-buttons">
+      <button class="cookie-btn accept-btn" id="acceptCookies">
+        <i class="fas fa-check"></i> Accept All
+      </button>
+      <button class="cookie-btn reject-btn" id="rejectCookies">
+        Decline
+      </button>
+    </div>
+  </div>
+
+  <!-- Full Privacy Policy Modal -->
+  <div class="privacy-modal-backdrop" id="privacyModalBackdrop"></div>
+  <div class="privacy-modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
+    <div class="privacy-modal-header">
+      <div class="privacy-modal-title-wrap">
+        <div class="privacy-modal-badge"><i class="fas fa-file-contract"></i> Official Document</div>
+        <h3 id="privacyModalTitle">Weblitex Privacy &amp; Cookie Policy</h3>
+      </div>
+      <button class="privacy-modal-close" id="closePrivacyModalBtn" aria-label="Close Privacy Policy">&times;</button>
+    </div>
+    
+    <div class="privacy-modal-body">
+      <p class="privacy-intro">
+        At <strong>Weblitex Agency</strong>, we respect your privacy and are committed to protecting personal information collected through our web development platforms and customer touchpoints.
+      </p>
+
+      <h4>1. Information We Collect</h4>
+      <p>When you browse our portfolio or contact us via our inquiry forms, we may collect your name, email address, phone number, and project details exclusively for communication, quotation, and project scoping purposes.</p>
+
+      <h4>2. How We Use Cookies</h4>
+      <p>Cookies are small data files stored on your browser that help us:</p>
+      <ul>
+        <li>Remember your display preferences and cookie consent status.</li>
+        <li>Ensure lightning-fast page loading and responsive animations.</li>
+        <li>Analyze anonymous engagement metrics to continuously enhance our project presentations.</li>
+      </ul>
+
+      <h4>3. Third-Party Services &amp; Security</h4>
+      <p>We implement enterprise-grade encryption and SSL standards. We never sell, rent, or trade your personal information to third parties.</p>
+
+      <h4>4. Contact &amp; Data Rights</h4>
+      <p>You may request access to, correction of, or deletion of your submitted contact details at any time by contacting our engineering team at <a href="mailto:rizwanrahi286@gmail.com" style="color:var(--color-brand); font-weight:600;">rizwanrahi286@gmail.com</a>.</p>
+    </div>
+
+    <div class="privacy-modal-footer">
+      <button class="privacy-modal-btn" id="closePrivacyModalFooterBtn">Close Policy</button>
+    </div>
+  </div>
+
+  <!-- EmailJS Official Browser SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

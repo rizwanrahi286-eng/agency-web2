@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaCart — Modern E-Commerce Platform | Built by Weblitex</title>
+  <meta name="description" content="NovaCart is a high-conversion modern e-commerce storefront engineered with custom WooCommerce architecture, instantaneous product filtering, and seamless checkout.">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A0F1D">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --nc-primary: #00D2B4;
+      --nc-primary-hover: #06B6D4;
+      --nc-dark: #0A0F1D;
+      --nc-card: #111927;
+      --nc-surface: #152238;
+      --nc-border: rgba(255, 255, 255, 0.1);
+      --nc-text: #FFFFFF;
+      --nc-text-muted: #94A3B8;
+      --nc-glow: rgba(0, 210, 180, 0.25);
+      --nc-accent-red: #F43F5E;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    }
+
+    ::selection {
+      background-color: var(--nc-primary);
+      color: #0A0F1D;
+    }
+
+    ::-moz-selection {
+      background-color: var(--nc-primary);
+      color: #0A0F1D;
+    }
+
+    body {
+      background-color: var(--nc-dark);
+      color: var(--nc-text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Agency Demo Bar */
+    .agency-bar {
+      background: linear-gradient(90deg, #00D2B4, #06B6D4);
+      color: #0A0F1D;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .agency-bar a {
+      color: #0A0F1D;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,0,0,0.1);
+      padding: 3px 10px;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+    .agency-bar a:hover {
+      background: #0A0F1D;
+      color: #00D2B4;
+    }
+
+    /* Announcement */
+    .announcement {
+      background: #0E1527;
+      border-bottom: 1px solid var(--nc-border);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      color: var(--nc-text-muted);
+    }
+    .announcement strong {
+      color: var(--nc-primary);
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 5%;
+      border-bottom: 1px solid var(--nc-border);
+      background: rgba(10, 15, 29, 0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 37px;
+      z-index: 900;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #FFF;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .brand-logo span {
+      color: var(--nc-primary);
+    }
+    .logo-badge {
+      font-size: 0.65rem;
+      background: rgba(0, 210, 180, 0.15);
+      color: var(--nc-primary);
+      border: 1px solid rgba(0, 210, 180, 0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--nc-text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--nc-primary);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .icon-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--nc-border);
+      color: #FFF;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s;
+    }
+    .icon-btn:hover {
+      background: rgba(0, 210, 180, 0.15);
+      border-color: var(--nc-primary);
+      color: var(--nc-primary);
+    }
+    .badge-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: var(--nc-primary);
+      color: #0A0F1D;
+      font-size: 0.7rem;
+      font-weight: 800;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 70px 5% 50px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 210, 180, 0.12);
+      border: 1px solid rgba(0, 210, 180, 0.25);
+      color: var(--nc-primary);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 3.4rem;
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .hero h1 span {
+      background: linear-gradient(90deg, #00D2B4, #38BDF8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color: var(--nc-text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      max-width: 540px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 35px;
+    }
+    .btn-main {
+      background: linear-gradient(90deg, #00D2B4, #06B6D4);
+      color: #0A0F1D;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 10px 25px var(--nc-glow);
+    }
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 210, 180, 0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      color: #FFF;
+      border: 1px solid var(--nc-border);
+      padding: 14px 24px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover {
+      border-color: var(--nc-primary);
+      color: var(--nc-primary);
+    }
+    .hero-stats {
+      display: flex;
+      gap: 30px;
+      border-top: 1px solid var(--nc-border);
+      padding-top: 25px;
+    }
+    .stat-item h4 {
+      font-size: 1.4rem;
+      color: #FFF;
+      font-weight: 800;
+    }
+    .stat-item p {
+      font-size: 0.82rem;
+      color: var(--nc-text-muted);
+      margin: 0;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+    .hero-visual-card {
+      background: var(--nc-card);
+      border: 1px solid var(--nc-border);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    .hero-visual-card img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+    .floating-card {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: rgba(14, 21, 39, 0.9);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 210, 180, 0.3);
+      padding: 14px 20px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .floating-card i {
+      font-size: 1.8rem;
+      color: var(--nc-primary);
+    }
+
+    /* Filter Tabs */
+    .catalog-section {
+      padding: 60px 5% 80px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .section-head {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-head h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .section-head p {
+      color: var(--nc-text-muted);
+    }
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .filter-btn {
+      background: var(--nc-card);
+      color: var(--nc-text-muted);
+      border: 1px solid var(--nc-border);
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--nc-primary);
+      color: #0A0F1D;
+      border-color: var(--nc-primary);
+    }
+
+    /* Product Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .product-card {
+      background: var(--nc-card);
+      border: 1px solid var(--nc-border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 210, 180, 0.4);
+      box-shadow: 0 16px 36px var(--nc-glow);
+    }
+    .product-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--nc-primary);
+      color: #0A0F1D;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+    .product-badge.sale {
+      background: var(--nc-accent-red);
+      color: #FFF;
+    }
+    .product-thumb {
+      height: 240px;
+      overflow: hidden;
+      position: relative;
+      background: #0E1527;
+    }
+    .product-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-thumb img {
+      transform: scale(1.07);
+    }
+    .product-info {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .product-cat {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--nc-primary);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #FFF;
+    }
+    .product-rating {
+      color: #FBBF24;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+    .product-rating span {
+      color: var(--nc-text-muted);
+      font-size: 0.75rem;
+      margin-left: 4px;
+    }
+    .product-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .product-price {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+    .product-price .old-price {
+      font-size: 0.85rem;
+      text-decoration: line-through;
+      color: var(--nc-text-muted);
+      margin-left: 6px;
+      font-weight: 500;
+    }
+    .add-cart-btn {
+      background: rgba(0, 210, 180, 0.12);
+      color: var(--nc-primary);
+      border: 1px solid rgba(0, 210, 180, 0.3);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .add-cart-btn:hover {
+      background: var(--nc-primary);
+      color: #0A0F1D;
+    }
+
+    /* Cart Drawer */
+    .cart-drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .cart-drawer-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      max-width: 90vw;
+      height: 100%;
+      background: var(--nc-card);
+      border-left: 1px solid var(--nc-border);
+      z-index: 2001;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+    .cart-drawer-overlay.open .cart-drawer {
+      right: 0;
+    }
+    .cart-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--nc-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-header h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .close-cart-btn {
+      background: none;
+      border: none;
+      color: var(--nc-text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .close-cart-btn:hover {
+      color: #FFF;
+    }
+    .cart-items {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cart-item {
+      display: flex;
+      gap: 12px;
+      background: #0E1527;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--nc-border);
+    }
+    .cart-item-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .cart-item-details {
+      flex-grow: 1;
+    }
+    .cart-item-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #FFF;
+      margin-bottom: 4px;
+    }
+    .cart-item-price {
+      font-size: 0.85rem;
+      color: var(--nc-primary);
+      font-weight: 700;
+    }
+    .cart-qty-ctrls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .qty-btn {
+      background: var(--nc-surface);
+      border: 1px solid var(--nc-border);
+      color: #FFF;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+    .remove-btn {
+      color: #F43F5E;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.8rem;
+      margin-left: auto;
+    }
+    .cart-footer {
+      padding: 20px;
+      border-top: 1px solid var(--nc-border);
+      background: #0E1527;
+    }
+    .cart-subtotal {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .cart-subtotal span:last-child {
+      color: var(--nc-primary);
+    }
+    .checkout-btn {
+      width: 100%;
+      background: linear-gradient(90deg, #00D2B4, #06B6D4);
+      color: #0A0F1D;
+      border: none;
+      padding: 14px;
+      border-radius: 30px;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .checkout-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px var(--nc-glow);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #111927;
+      border: 1px solid var(--nc-primary);
+      color: #FFF;
+      padding: 14px 22px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 3000;
+    }
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .toast i {
+      color: var(--nc-primary);
+      font-size: 1.2rem;
+    }
+
+    /* Trust banner */
+    .trust-strip {
+      background: #0E1527;
+      border-top: 1px solid var(--nc-border);
+      border-bottom: 1px solid var(--nc-border);
+      padding: 40px 5%;
+    }
+    .trust-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+    }
+    .trust-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .trust-card i {
+      font-size: 2rem;
+      color: var(--nc-primary);
+    }
+    .trust-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #FFF;
+    }
+    .trust-card p {
+      font-size: 0.8rem;
+      color: var(--nc-text-muted);
+    }
+
+    /* Footer */
+    .footer {
+      background: #060912;
+      border-top: 1px solid var(--nc-border);
+      padding: 60px 5% 30px;
+      color: var(--nc-text-muted);
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .footer-copy {
+      font-size: 0.85rem;
+      text-align: center;
+      padding-top: 20px;
+    }
+    .footer-copy strong {
+      color: var(--nc-primary);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 40px;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Agency Header -->
+  <aside class="agency-bar" aria-label="Weblitex Agency Demo Navigation">
+    <div>
+      <i class="fas fa-layer-group"></i> <strong>Weblitex Showcase</strong> &bull; NovaCart WooCommerce Store Project Demo
+    </div>
+    <a href="index.html#projects"><i class="fas fa-arrow-left"></i> Return to Agency Website</a>
+  </aside>
+
+  <!-- Announcement Bar -->
+  <div class="announcement">
+    🚀 <strong>Custom WooCommerce Build:</strong> Sub-second page loads, instant algorithmic filtering, and 1-click multi-currency checkout.
+  </div>
+
+  <!-- Modern Navigation -->
+  <header class="navbar">
+    <a href="#" class="brand-logo">
+      NOVACART <span>&bull;</span> <span class="logo-badge">Live Store</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Store</a></li>
+      <li><a href="#catalog">Audio & Tech</a></li>
+      <li><a href="#catalog">Smart Living</a></li>
+      <li><a href="#catalog">Timepieces</a></li>
+      <li><a href="index.html#kontakt">Hire Weblitex</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Search items" onclick="showToast('Search indexing active — 128 items found')">
+        <i class="fas fa-search"></i>
+      </button>
+      <button class="icon-btn" aria-label="Wishlist" onclick="showToast('Wishlist synchronized')">
+        <i class="far fa-heart"></i>
+        <span class="badge-count">2</span>
+      </button>
+      <button class="icon-btn" id="openCartBtn" aria-label="Open Shopping Cart">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="badge-count" id="cartCount">2</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">
+        <i class="fas fa-bolt"></i> Ultra-Fast WooCommerce Store
+      </div>
+      <h1>Next-Gen Tech &amp; <span>Minimalist Luxury</span></h1>
+      <p>Precision-engineered audio gear, sleek workspace ergonomics, and smart home aesthetics designed for uncompromising performance.</p>
+      <div class="hero-ctas">
+        <a href="#catalog" class="btn-main">Shop Featured Items <i class="fas fa-arrow-right"></i></a>
+        <button class="btn-outline" onclick="showToast('Coupon code WEBLITEX applied: 20% OFF')">Claim 20% Discount</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <h4>0.4s</h4>
+          <p>Page Load Time</p>
+        </div>
+        <div class="stat-item">
+          <h4>99.9%</h4>
+          <p>Uptime &amp; Speed</p>
+        </div>
+        <div class="stat-item">
+          <h4>4.9 / 5</h4>
+          <p>Customer Rating</p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-card">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80" alt="NovaCart Signature Wireless Headphones">
+        <div class="floating-card">
+          <i class="fas fa-shield-halved"></i>
+          <div>
+            <h5 style="font-size:0.95rem; font-weight:700;">Zero-Bloat WordPress</h5>
+            <p style="font-size:0.75rem; color:var(--nc-text-muted);">Crafted by Weblitex Agency</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Props -->
+  <section class="trust-strip">
+    <div class="trust-grid">
+      <div class="trust-card">
+        <i class="fas fa-truck-fast"></i>
+        <div>
+          <h4>Express Global Shipping</h4>
+          <p>Dispatched within 24 hours worldwide</p>
+        </div>
+      </div>
+      <div class="trust-card">
+        <i class="fas fa-lock"></i>
+        <div>
+          <h4>Encrypted 256-Bit Checkout</h4>
+          <p>Stripe &amp; PayPal PCI-DSS compliant</p>
+        </div>
+      </div>
+      <div class="trust-card">
+        <i class="fas fa-arrow-rotate-left"></i>
+        <div>
+          <h4>30-Day Risk-Free Trial</h4>
+          <p>Instant refunds, no hassle returns</p>
+        </div>
+      </div>
+      <div class="trust-card">
+        <i class="fas fa-headset"></i>
+        <div>
+          <h4>24/7 Priority Support</h4>
+          <p>Dedicated digital assistance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Catalog -->
+  <section class="catalog-section" id="catalog">
+    <div class="section-head">
+      <h2>Curated Signature Collection</h2>
+      <p>Explore high-performance lifestyle and tech pieces available for instant dispatch.</p>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button class="filter-btn active" data-filter="all">All Products</button>
+      <button class="filter-btn" data-filter="audio">Audio &amp; Sound</button>
+      <button class="filter-btn" data-filter="wearable">Wearables</button>
+      <button class="filter-btn" data-filter="workspace">Workspace</button>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" id="productsGrid">
+
+      <!-- Item 1 -->
+      <div class="product-card" data-category="audio">
+        <span class="product-badge">Bestseller</span>
+        <div class="product-thumb">
+          <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=700&q=80" alt="Nova ANC Pro Wireless Headphones">
+        </div>
+        <div class="product-info">
+          <span class="product-cat">Audio &amp; Sound</span>
+          <h3 class="product-title">Nova ANC Pro Wireless Headphones</h3>
+          <div class="product-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(148 reviews)</span>
+          </div>
+          <div class="product-bottom">
+            <div class="product-price">$249.00 <span class="old-price">$299.00</span></div>
+            <button class="add-cart-btn" onclick="addToCart('Nova ANC Pro Headphones', 249, 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=150&q=80')">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="product-card" data-category="wearable">
+        <span class="product-badge sale">Save $70</span>
+        <div class="product-thumb">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80" alt="Apex Horizon Smart Timepiece">
+        </div>
+        <div class="product-info">
+          <span class="product-cat">Wearables</span>
+          <h3 class="product-title">Apex Horizon Minimal Smartwatch</h3>
+          <div class="product-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span>(94 reviews)</span>
+          </div>
+          <div class="product-bottom">
+            <div class="product-price">$189.00 <span class="old-price">$259.00</span></div>
+            <button class="add-cart-btn" onclick="addToCart('Apex Horizon Smartwatch', 189, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=150&q=80')">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="product-card" data-category="workspace">
+        <span class="product-badge">New Arrival</span>
+        <div class="product-thumb">
+          <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=700&q=80" alt="Nordic Mechanical Tactile Keyboard">
+        </div>
+        <div class="product-info">
+          <span class="product-cat">Workspace</span>
+          <h3 class="product-title">Nordic Custom Wireless Keyboard</h3>
+          <div class="product-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(62 reviews)</span>
+          </div>
+          <div class="product-bottom">
+            <div class="product-price">$145.00</div>
+            <button class="add-cart-btn" onclick="addToCart('Nordic Custom Keyboard', 145, 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=150&q=80')">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="product-card" data-category="audio">
+        <div class="product-thumb">
+          <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=700&q=80" alt="Aura Wireless Hi-Fi Earbuds">
+        </div>
+        <div class="product-info">
+          <span class="product-cat">Audio &amp; Sound</span>
+          <h3 class="product-title">Aura Wireless Hi-Fi Earbuds</h3>
+          <div class="product-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(210 reviews)</span>
+          </div>
+          <div class="product-bottom">
+            <div class="product-price">$129.00</div>
+            <button class="add-cart-btn" onclick="addToCart('Aura Hi-Fi Earbuds', 129, 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=150&q=80')">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="product-card" data-category="workspace">
+        <span class="product-badge sale">Trending</span>
+        <div class="product-thumb">
+          <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=700&q=80" alt="Precision Aluminum Wireless Mouse">
+        </div>
+        <div class="product-info">
+          <span class="product-cat">Workspace</span>
+          <h3 class="product-title">Precision Ergonomic Laser Mouse</h3>
+          <div class="product-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span>(47 reviews)</span>
+          </div>
+          <div class="product-bottom">
+            <div class="product-price">$89.00 <span class="old-price">$110.00</span></div>
+            <button class="add-cart-btn" onclick="addToCart('Precision Laser Mouse', 89, 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=150&q=80')">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="product-card" data-category="wearable">
+        <div class="product-thumb">
+          <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=700&q=80" alt="Titanium Health Tracker Ring">
+        </div>
+        <div class="product-info">
+          <span class="product-cat">Wearables</span>
+          <h3 class="product-title">Onyx Titanium Smart Biometric Ring</h3>
+          <div class="product-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>(83 reviews)</span>
+          </div>
+          <div class="product-bottom">
+            <div class="product-price">$299.00</div>
+            <button class="add-cart-btn" onclick="addToCart('Onyx Biometric Ring', 299, 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=150&q=80')">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Slide-out Shopping Cart -->
+  <div class="cart-drawer-overlay" id="cartOverlay">
+    <div class="cart-drawer" id="cartDrawer">
+      <div class="cart-header">
+        <h3>Your Bag (<span id="drawerCount">2</span>)</h3>
+        <button class="close-cart-btn" id="closeCartBtn" aria-label="Close cart">&times;</button>
+      </div>
+      <div class="cart-items" id="cartItemsList">
+        <!-- Dynamically rendered -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-subtotal">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$394.00</span>
+        </div>
+        <button class="checkout-btn" onclick="triggerCheckout()">Proceed to Secure Checkout <i class="fas fa-lock"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMsg">Product added to your cart!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div>
+        <h3 style="color:#FFF; font-weight:800; font-size:1.3rem;">NOVACART <span>&bull;</span></h3>
+        <p style="font-size:0.85rem; margin-top:6px;">High-conversion WooCommerce platform demonstration.</p>
+      </div>
+      <div>
+        <a href="index.html#kontakt" class="btn-main" style="font-size:0.88rem; padding:10px 20px;">
+          Build Your Store With Weblitex
+        </a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      &copy; 2026 NovaCart Demo &bull; Engineered with speed &amp; precision by <strong>Weblitex Agency</strong>.
+    </div>
+  </footer>
+
+  <script>
+    // Cart Data
+    let cart = [
+      { id: 1, name: 'Nova ANC Pro Wireless Headphones', price: 249, qty: 1, img: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=150&q=80' },
+      { id: 2, name: 'Nordic Custom Wireless Keyboard', price: 145, qty: 1, img: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=150&q=80' }
+    ];
+
+    const cartOverlay = document.getElementById('cartOverlay');
+    const openCartBtn = document.getElementById('openCartBtn');
+    const closeCartBtn = document.getElementById('closeCartBtn');
+    const cartItemsList = document.getElementById('cartItemsList');
+    const cartCount = document.getElementById('cartCount');
+    const drawerCount = document.getElementById('drawerCount');
+    const cartSubtotal = document.getElementById('cartSubtotal');
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+
+    function renderCart() {
+      cartItemsList.innerHTML = '';
+      let total = 0;
+      let totalQty = 0;
+
+      if (cart.length === 0) {
+        cartItemsList.innerHTML = '<p style="color:var(--nc-text-muted); text-align:center; margin-top:40px;">Your cart is currently empty.</p>';
+      } else {
+        cart.forEach((item, index) => {
+          total += item.price * item.qty;
+          totalQty += item.qty;
+
+          const itemEl = document.createElement('div');
+          itemEl.className = 'cart-item';
+          itemEl.innerHTML = `
+            <img src="${item.img}" alt="${item.name}" class="cart-item-img">
+            <div class="cart-item-details">
+              <div class="cart-item-title">${item.name}</div>
+              <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+              <div class="cart-qty-ctrls">
+                <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                <span style="font-size:0.85rem; font-weight:700;">${item.qty}</span>
+                <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+                <button class="remove-btn" onclick="removeItem(${index})"><i class="fas fa-trash-alt"></i></button>
+              </div>
+            </div>
+          `;
+          cartItemsList.appendChild(itemEl);
+        });
+      }
+
+      cartCount.textContent = totalQty;
+      drawerCount.textContent = totalQty;
+      cartSubtotal.textContent = '$' + total.toFixed(2);
+    }
+
+    function addToCart(name, price, img) {
+      const existing = cart.find(i => i.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id: Date.now(), name, price, qty: 1, img });
+      }
+      renderCart();
+      showToast(`Added "${name}" to cart!`);
+      openCart();
+    }
+
+    function changeQty(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      renderCart();
+      showToast('Item removed from cart');
+    }
+
+    function openCart() {
+      cartOverlay.classList.add('open');
+    }
+
+    function closeCart() {
+      cartOverlay.classList.remove('open');
+    }
+
+    openCartBtn.addEventListener('click', openCart);
+    closeCartBtn.addEventListener('click', closeCart);
+    cartOverlay.addEventListener('click', (e) => {
+      if (e.target === cartOverlay) closeCart();
+    });
+
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    function triggerCheckout() {
+      if (cart.length === 0) {
+        showToast('Cart is empty. Add items before checking out!');
+        return;
+      }
+      showToast('Redirecting to 1-Click Secure Stripe Checkout...');
+      setTimeout(() => {
+        alert('🎉 NovaCart Checkout Flow Demo: Order placement simulation successful! Built by Weblitex Agency.');
+        closeCart();
+      }, 1200);
+    }
+
+    // Category Filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+
+        productCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Initialize cart
+    renderCart();
+  </script>
+</body>
+</html>

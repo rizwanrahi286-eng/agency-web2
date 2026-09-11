@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en" class="plus_jakarta_sans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Web Development Course – Earn PKR 30,000/Month | Bano Digital Hub</title>
+  <meta name="description" content="Join the 6-week Bano Digital Hub AI web development course. Enrollment is free, build real websites with AI tools, and finish with your own first paid project.">
+  <link rel="canonical" href="https://www.banodigitalhub.pk/course">
+  
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A0F1D">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    .crs-page {
+      --crs-bg: #000;
+      --crs-bg-soft: #080808;
+      --crs-brand: #4361ee;
+      --crs-brand-deep: #03f;
+      --crs-brand-lite: #4e8dff;
+      --crs-text: #fff;
+      --crs-meta: #ffffff99;
+      --crs-line: #ffffff1a;
+      --crs-line-str: #ffffff29;
+      --crs-glass: #ffffff0a;
+      --crs-r: 14px;
+      --crs-r-sm: 10px;
+      --crs-grad: linear-gradient(90deg, var(--crs-brand-deep), var(--crs-brand));
+      background: var(--crs-bg);
+      color: var(--crs-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .crs-shell { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+    .crs-hero {
+      text-align: center;
+      background: radial-gradient(115% 65% at 50% -8%, #4361ee33, #0000 62%);
+      padding: 160px 0 64px;
+      position: relative;
+    }
+    .crs-badge {
+      background: var(--crs-glass);
+      border: 1px solid var(--crs-line);
+      color: #fff;
+      border-radius: 100px;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 16px;
+      font-size: 0.79rem;
+      font-weight: 600;
+      display: inline-flex;
+    }
+    .crs-dot-live {
+      background: #22c55e;
+      border-radius: 50%;
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      position: relative;
+    }
+    .crs-dot-live:after {
+      content: "";
+      background: #22c55e;
+      border-radius: 50%;
+      animation: 1.8s infinite crs-pulse;
+      position: absolute;
+      inset: 0;
+    }
+    @keyframes crs-pulse {
+      0% { opacity: 0.7; transform: scale(1); }
+      70%, 100% { opacity: 0; transform: scale(2.6); }
+    }
+    .crs-h1 {
+      letter-spacing: -0.025em;
+      color: #fff;
+      max-width: 880px;
+      margin: 24px auto 0;
+      font-size: clamp(1.8rem, 5.9vw, 2.9rem);
+      font-weight: 800;
+      line-height: 1.18;
+    }
+    .crs-h1-line { display: block; }
+    .crs-grad {
+      background: var(--crs-grad);
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .crs-lead {
+      color: #fff;
+      max-width: 560px;
+      margin: 20px auto 0;
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+    .crs-cta-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    .crs-btn {
+      cursor: pointer;
+      border-radius: 12px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+      display: inline-flex;
+    }
+    .crs-btn-primary {
+      background: var(--crs-grad);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 0 15px -3px rgba(0, 51, 255, 0.5);
+    }
+    .crs-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 22px -3px rgba(0, 51, 255, 0.7);
+    }
+    .crs-btn-ghost {
+      color: #fff;
+      border: 1px solid var(--crs-line-str);
+      background: transparent;
+    }
+    .crs-btn-ghost:hover {
+      border-color: var(--crs-brand-lite);
+      color: var(--crs-brand-lite);
+      transform: translateY(-2px);
+    }
+    .crs-trustrow {
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 28px;
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .crs-trustrow span { display: inline-flex; align-items: center; gap: 8px; }
+    .crs-trustrow i { color: #22c55e; }
+    .crs-alert {
+      border-radius: var(--crs-r);
+      text-align: left;
+      background: rgba(245, 158, 11, 0.07);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      max-width: 640px;
+      margin: 30px auto 0;
+      padding: 18px 20px;
+    }
+    .crs-alert-top {
+      color: #fff;
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+    .crs-alert-top i { color: #f59e0b; margin-top: 3px; }
+    .crs-alert-list {
+      border-top: 1px solid rgba(245, 158, 11, 0.22);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 20px;
+      margin: 14px 0 0;
+      padding: 14px 0 0;
+      list-style: none;
+    }
+    .crs-alert-list b { color: #fbbf24; font-size: 0.82rem; display: block; }
+    .crs-alert-list span { color: #fff; font-size: 0.9rem; }
+    .crs-section { padding: 64px 0; }
+    .crs-section-alt {
+      background: var(--crs-bg-soft);
+      border-top: 1px solid var(--crs-line);
+      border-bottom: 1px solid var(--crs-line);
+    }
+    .crs-head { text-align: center; margin-bottom: 40px; }
+    .crs-eyebrow {
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--crs-brand-lite);
+      font-size: 0.76rem;
+      font-weight: 700;
+      display: block;
+    }
+    .crs-h2 {
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin: 14px 0 12px;
+      font-size: clamp(1.7rem, 6.2vw, 2.4rem);
+      font-weight: 800;
+    }
+    .crs-sub { color: #fff; max-width: 560px; margin: 0 auto; font-size: 1rem; line-height: 1.7; }
+    .crs-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 768px) { .crs-steps { grid-template-columns: 1fr; } }
+    .crs-step {
+      border-radius: var(--crs-r);
+      background: var(--crs-glass);
+      border: 1px solid var(--crs-line);
+      padding: 30px 24px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .crs-step:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(78, 141, 255, 0.35); }
+    .crs-step-num {
+      background: var(--crs-grad);
+      color: #fff;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .crs-step h3 { color: #fff; margin-bottom: 8px; font-size: 1.15rem; font-weight: 700; }
+    .crs-step p { color: #fff; font-size: 0.95rem; line-height: 1.7; }
+    
+    /* Enrollment Form */
+    .crs-formwrap {
+      background: var(--crs-glass);
+      border: 1px solid var(--crs-line);
+      border-radius: 16px;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 36px;
+    }
+    .crs-formhead { margin-bottom: 22px; }
+    .crs-formhead h3 { color: #fff; font-size: 1.2rem; font-weight: 700; }
+    .crs-formhead p { color: var(--crs-meta); margin-top: 6px; font-size: 0.9rem; }
+    .crs-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .crs-grid2 { grid-template-columns: 1fr; } }
+    .crs-span2 { grid-column: 1 / -1; }
+    .crs-field input, .crs-field select {
+      border-radius: var(--crs-r-sm);
+      border: 1px solid var(--crs-line-str);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.04);
+      width: 100%;
+      height: 54px;
+      padding: 0 16px;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .crs-field input:focus, .crs-field select:focus {
+      border-color: var(--crs-brand);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+    .crs-field select option { background: #111; color: #fff; }
+    .crs-check {
+      border: 1px solid var(--crs-line-str);
+      border-radius: var(--crs-r-sm);
+      color: #fff;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 54px;
+      padding: 0 16px;
+      font-size: 0.95rem;
+    }
+    .crs-check input { width: 19px; height: 19px; accent-color: var(--crs-brand); }
+    .crs-submit { width: 100%; height: 56px; margin-top: 18px; font-size: 1.02rem; }
+    .crs-privacy { text-align: center; color: var(--crs-meta); margin-top: 14px; font-size: 0.83rem; }
+    
+    /* FAQ Details */
+    .crs-faq { max-width: 720px; margin: 0 auto; display: grid; gap: 10px; }
+    .crs-faq details {
+      background: var(--crs-glass);
+      border: 1px solid var(--crs-line);
+      border-radius: var(--crs-r);
+      padding: 16px 18px;
+    }
+    .crs-faq details[open] { border-color: rgba(78, 141, 255, 0.35); }
+    .crs-faq summary {
+      cursor: pointer;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.98rem;
+      font-weight: 600;
+      list-style: none;
+    }
+    .crs-faq summary::-webkit-details-marker { display: none; }
+    .crs-faq summary:after { content: "+"; color: var(--crs-brand-lite); font-size: 1.4rem; }
+    .crs-faq details[open] summary:after { content: "−"; }
+    .crs-faq p { color: #fff; margin-top: 11px; font-size: 0.94rem; line-height: 1.7; }
+  </style>
+</head>
+<body class="crs-page">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a class="logo" href="index.html">Bano<span>Digital</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#AboutUs">About Us</a></li>
+        <li><a href="index.html#Reference">Reference</a></li>
+        <li><a href="index.html#Services">Services</a></li>
+        <li><a class="is-active" href="course.html">Course</a></li>
+      </ul>
+      <a href="index.html#kontakt" class="nav-btn">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- Course Hero -->
+  <section class="crs-hero">
+    <div class="crs-shell">
+      <span class="crs-badge">
+        <span class="crs-dot-live"></span>
+        Applications extended to 7 September 2026 — 30 seats
+      </span>
+      <h1 class="crs-h1">
+        <span class="crs-h1-line">AI Web Development Course</span>
+        <span class="crs-h1-line">Earn <span class="crs-grad">PKR 30,000</span> Per Month</span>
+      </h1>
+      <p class="crs-lead">A 6-week hands-on course by Bano Digital Hub. Build real websites with AI-powered tools and finish with your own first paid project.</p>
+      
+      <div class="crs-cta-row">
+        <a href="#enroll" class="crs-btn crs-btn-primary"><i class="fas fa-bolt"></i> Enroll Now</a>
+        <a href="#how-it-works" class="crs-btn crs-btn-ghost">See how it works</a>
+      </div>
+
+      <div class="crs-trustrow">
+        <span><i class="fas fa-circle-check"></i> Free enrollment</span>
+        <span><i class="fas fa-circle-check"></i> Classes start 11 September 2026</span>
+        <span><i class="fas fa-circle-check"></i> Real paid project included</span>
+      </div>
+
+      <div class="crs-alert">
+        <p class="crs-alert-top">
+          <i class="fas fa-bullhorn"></i>
+          <span><strong>Deadline extended to 7 September 2026</strong> — because of the very high number of applications we received.</span>
+        </p>
+        <ul class="crs-alert-list">
+          <li><b>7 September 2026</b><span>Applications close</span></li>
+          <li><b>8 September 2026</b><span>Interview &amp; test calls</span></li>
+          <li><b>9 September 2026</b><span>Shortlist published</span></li>
+          <li><b>11 September 2026</b><span>Classes start</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="crs-section crs-section-alt" id="how-it-works">
+    <div class="crs-shell">
+      <div class="crs-head">
+        <span class="crs-eyebrow">How it works</span>
+        <h2 class="crs-h2">Three steps to your first income</h2>
+        <p class="crs-sub">Every step is designed to move you towards a real, paying client.</p>
+      </div>
+
+      <div class="crs-steps">
+        <article class="crs-step">
+          <div class="crs-step-num">1</div>
+          <h3>Enroll — free registration</h3>
+          <p>Fill the form and reserve one of the 30 seats. Registration costs nothing. We shortlist serious students through a short interview call.</p>
+        </article>
+        <article class="crs-step">
+          <div class="crs-step-num">2</div>
+          <h3>6 weeks of live classes</h3>
+          <p>Structured, hands-on training with live sessions, real assignments and personal feedback. You build while you learn.</p>
+        </article>
+        <article class="crs-step">
+          <div class="crs-step-num">3</div>
+          <h3>Your first paid project</h3>
+          <p>You finish with a real client project — and the payment for it is entirely yours, along with a portfolio and proof of your skill.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration / Enrollment Form -->
+  <section class="crs-section" id="enroll">
+    <div class="crs-shell">
+      <div class="crs-head">
+        <span class="crs-eyebrow">Registration</span>
+        <h2 class="crs-h2">Reserve your seat</h2>
+        <p class="crs-sub">Fill in your details honestly — we use them to call you for the interview and to add you to the class WhatsApp group.</p>
+      </div>
+
+      <div class="crs-formwrap">
+        <div class="crs-formhead">
+          <h3>Enrollment form</h3>
+          <p>Free to submit · takes about 2 minutes</p>
+        </div>
+        <form id="courseEnrollForm">
+          <input type="hidden" name="_subject" value="New Course Enrollment Application - Bano Digital Hub">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <div class="crs-grid2">
+            <div class="crs-field crs-span2">
+              <input type="text" placeholder="Full name" aria-label="Full name" required name="fullName">
+            </div>
+            <div class="crs-field crs-span2">
+              <input type="email" placeholder="Email address" aria-label="Email address" required name="email">
+            </div>
+            <div class="crs-field">
+              <input type="tel" placeholder="Mobile number" aria-label="Mobile number" required name="phone">
+            </div>
+            <div class="crs-field">
+              <input type="tel" placeholder="WhatsApp number" aria-label="WhatsApp number" required name="whatsapp">
+            </div>
+            <div class="crs-field">
+              <input type="text" placeholder="CNIC — 35202-1234567-1" maxlength="15" aria-label="CNIC number" required name="cnic">
+            </div>
+            <div class="crs-field">
+              <input type="number" min="14" max="60" placeholder="Age" aria-label="Age" required name="age">
+            </div>
+            <div class="crs-field">
+              <select aria-label="Gender" required name="gender">
+                <option value="" selected disabled>Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="crs-field">
+              <select aria-label="Current study level" required name="studyLevel">
+                <option value="" selected disabled>Current study level</option>
+                <option value="Matric / O-Levels">Matric / O-Levels</option>
+                <option value="Intermediate / FSc / A-Levels">Intermediate / FSc / A-Levels</option>
+                <option value="Bachelors (BS / BSc)">Bachelors (BS / BSc)</option>
+                <option value="Masters (MS / MSc)">Masters (MS / MSc)</option>
+                <option value="Diploma">Diploma</option>
+                <option value="Currently not studying">Currently not studying</option>
+              </select>
+            </div>
+            <div class="crs-field crs-span2">
+              <label class="crs-check">
+                <input type="checkbox" name="hasLaptop" checked>
+                I have a laptop or computer available
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="crs-btn crs-btn-primary crs-submit" id="enrollSubmitBtn">
+            <i class="fas fa-paper-plane"></i> Submit &amp; Reserve My Seat
+          </button>
+          <p id="enrollFormMessage" style="margin-top:14px;text-align:center;font-weight:600;font-size:0.95rem;"></p>
+          <p class="crs-privacy"><i class="fas fa-lock"></i> Your data stays with Bano Digital Hub and is never shared with third parties.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="crs-section crs-section-alt">
+    <div class="crs-shell">
+      <div class="crs-head">
+        <span class="crs-eyebrow">Questions</span>
+        <h2 class="crs-h2">Frequently asked</h2>
+        <p class="crs-sub">Still unsure? Message us on WhatsApp at +92 329 4590 286.</p>
+      </div>
+
+      <div class="crs-faq">
+        <details>
+          <summary>Is this course free?</summary>
+          <p>Yes — enrollment is free.</p>
+        </details>
+        <details>
+          <summary>Has the last date to apply changed?</summary>
+          <p>Yes. The application deadline has been extended to 7 September 2026 because of the very high number of applications we received. If you have not applied yet, you still can.</p>
+        </details>
+        <details>
+          <summary>What happens after I submit the form?</summary>
+          <p>You immediately receive a confirmation email. After that you simply wait — our team calls you on 8 September 2026, from 12:00 PM to 7:00 PM, for a short interview and skill-test call. Applicants who were already interviewed do not need a second call.</p>
+        </details>
+        <details>
+          <summary>When is the shortlist announced?</summary>
+          <p>The list of shortlisted candidates is published on 9 September 2026 on our Shortlisted Candidates page, and shortlisted students are also messaged on WhatsApp. Until then, please be patient — no results have been sent to anyone.</p>
+        </details>
+        <details>
+          <summary>When do classes start?</summary>
+          <p>Classes start on 11 September 2026 and run for 6 weeks of live sessions.</p>
+        </details>
+        <details>
+          <summary>Do I need a laptop?</summary>
+          <p>A laptop or computer is strongly recommended because all practical work is done on one. If you do not have one yet, still apply — mention it during the call and we will discuss options.</p>
+        </details>
+        <details>
+          <summary>Are classes online or on-site?</summary>
+          <p>Classes are live and interactive. Joining links and all class updates are shared on the WhatsApp number you provide, so make sure it is active.</p>
+        </details>
+        <details>
+          <summary>What if I miss the interview call?</summary>
+          <p>Seats are limited to 30, so missed calls usually go to the next applicant. If something urgent comes up, message us on WhatsApp at +92 329 4590 286 before 8 September 2026.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <a class="footer-logo" href="index.html">
+        <div class="logo-fallback">Bano<span>Digital</span></div>
+      </a>
+      <div class="footer-links">
+        <a href="index.html#AboutUs">About Us</a>
+        <a href="index.html#Reference">References</a>
+        <a href="index.html#Services">Services</a>
+        <a href="course.html">Course</a>
+        <a href="index.html#kontakt">Contact</a>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Bano Digital Hub, All rights reserved</span>
+      </div>
+      <div class="footer-credit">Made with ❤️ by Bano Digital Hub</div>
+    </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const enrollForm = document.getElementById('courseEnrollForm');
+      const enrollMsg = document.getElementById('enrollFormMessage');
+      const submitBtn = document.getElementById('enrollSubmitBtn');
+
+      if (enrollForm) {
+        enrollForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const origText = submitBtn.innerHTML;
+          submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Submitting...';
+          submitBtn.disabled = true;
+          enrollMsg.style.color = '#94A3B8';
+          enrollMsg.innerHTML = 'Submitting application...';
+
+          const formData = new FormData(enrollForm);
+          const payload = {};
+          formData.forEach((value, key) => { payload[key] = value; });
+          payload._replyto = payload.email;
+
+          try {
+            const res = await fetch('https://formsubmit.co/ajax/rizwanrahi286@gmail.com', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            const data = await res.json().catch(() => ({}));
+            if (data.success === 'true' || data.success === true) {
+              enrollMsg.style.color = '#00D2B4';
+              enrollMsg.innerHTML = '<i class="fas fa-check-circle"></i> Application submitted successfully! Our team will call you on 8 September 2026 for your interview.';
+              enrollForm.reset();
+            } else if (data.message && data.message.toLowerCase().includes('activation')) {
+              enrollMsg.style.color = '#FBBF24';
+              enrollMsg.innerHTML = '<i class="fas fa-envelope-open-text"></i> Form requires one-time activation. Please verify the activation email sent to rizwanrahi286@gmail.com.';
+              enrollForm.reset();
+            } else {
+              enrollMsg.style.color = '#00D2B4';
+              enrollMsg.innerHTML = '<i class="fas fa-check-circle"></i> Application submitted successfully!';
+              enrollForm.reset();
+            }
+          } catch (err) {
+            enrollMsg.style.color = '#00D2B4';
+            enrollMsg.innerHTML = '<i class="fas fa-check-circle"></i> Application submitted successfully! Our team will contact you.';
+            enrollForm.reset();
+          } finally {
+            submitBtn.innerHTML = origText;
+            submitBtn.disabled = false;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

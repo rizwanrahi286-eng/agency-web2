@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Living — Ultra Luxury Real Estate &amp; Architectural Residences | Built by Weblitex</title>
+  <meta name="description" content="Apex Living is a premier luxury real estate web portal featuring interactive property tours, architectural galleries, dynamic search filters, and direct WhatsApp lead capture.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --al-primary: #00D2B4;
+      --al-primary-lite: #06B6D4;
+      --al-gold: #F59E0B;
+      --al-dark: #0A0F1D;
+      --al-card: #111927;
+      --al-surface: #152238;
+      --al-border: rgba(255, 255, 255, 0.1);
+      --al-text: #FFFFFF;
+      --al-text-muted: #94A3B8;
+      --al-glow: rgba(0, 210, 180, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    }
+
+    ::selection {
+      background-color: var(--al-primary);
+      color: #0A0F1D;
+    }
+
+    ::-moz-selection {
+      background-color: var(--al-primary);
+      color: #0A0F1D;
+    }
+
+    body {
+      background-color: var(--al-dark);
+      color: var(--al-text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Agency Bar */
+    .agency-bar {
+      background: linear-gradient(90deg, #00D2B4, #06B6D4);
+      color: #0A0F1D;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .agency-bar a {
+      color: #0A0F1D;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,0,0,0.1);
+      padding: 3px 10px;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+    .agency-bar a:hover {
+      background: #0A0F1D;
+      color: #00D2B4;
+    }
+
+    /* Header */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      background: rgba(10, 15, 29, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--al-border);
+      position: sticky;
+      top: 37px;
+      z-index: 900;
+    }
+    .logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #FFF;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    .logo span {
+      color: var(--al-primary);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: block;
+      margin-top: -4px;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+    .nav-menu a {
+      color: var(--al-text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-menu a:hover, .nav-menu a.active {
+      color: var(--al-primary);
+    }
+    .btn-vip {
+      background: rgba(0, 210, 180, 0.12);
+      color: var(--al-primary);
+      border: 1px solid rgba(0, 210, 180, 0.35);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .btn-vip:hover {
+      background: var(--al-primary);
+      color: #0A0F1D;
+      box-shadow: 0 8px 20px var(--al-glow);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 120px 5% 100px;
+      background: linear-gradient(180deg, rgba(10, 15, 29, 0.7) 0%, rgba(10, 15, 29, 0.95) 100%),
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 210, 180, 0.15);
+      border: 1px solid rgba(0, 210, 180, 0.3);
+      color: var(--al-primary);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.6rem;
+      max-width: 850px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #FFF;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--al-primary);
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--al-text-muted);
+      max-width: 620px;
+      margin-bottom: 45px;
+    }
+
+    /* Search Filter Box */
+    .search-filter-card {
+      background: rgba(17, 25, 39, 0.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--al-border);
+      border-radius: 20px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 960px;
+      width: 100%;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      flex-wrap: wrap;
+    }
+    .filter-group {
+      flex: 1;
+      min-width: 180px;
+      text-align: left;
+    }
+    .filter-group label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--al-primary);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .filter-group select, .filter-group input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: #FFF;
+      font-size: 0.95rem;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+    .filter-group select option {
+      background: #111927;
+      color: #FFF;
+    }
+    .filter-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--al-border);
+    }
+    .search-btn {
+      background: linear-gradient(90deg, #00D2B4, #06B6D4);
+      color: #0A0F1D;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .search-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px var(--al-glow);
+    }
+
+    /* Properties Section */
+    .properties-section {
+      padding: 80px 5%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .section-title-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .section-title-wrap h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #FFF;
+    }
+    .section-title-wrap p {
+      color: var(--al-text-muted);
+      margin-top: 6px;
+    }
+
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 32px;
+    }
+    .property-card {
+      background: var(--al-card);
+      border: 1px solid var(--al-border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .property-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 210, 180, 0.45);
+      box-shadow: 0 20px 40px var(--al-glow);
+    }
+    .property-thumb {
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+    }
+    .property-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .property-card:hover .property-thumb img {
+      transform: scale(1.08);
+    }
+    .property-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(10, 15, 29, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--al-border);
+      color: var(--al-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .property-tour-badge {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(0, 210, 180, 0.9);
+      color: #0A0F1D;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .property-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .property-location {
+      font-size: 0.82rem;
+      color: var(--al-primary);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .property-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #FFF;
+      line-height: 1.3;
+    }
+    .property-specs {
+      display: flex;
+      gap: 18px;
+      padding: 12px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 18px;
+      color: var(--al-text-muted);
+      font-size: 0.85rem;
+    }
+    .spec-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .spec-item i {
+      color: var(--al-primary);
+    }
+    .property-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+    .property-price {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+    .property-price span {
+      font-size: 0.8rem;
+      color: var(--al-text-muted);
+      font-weight: 400;
+    }
+    .whatsapp-inquire-btn {
+      background: #25D366;
+      color: #FFF;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .whatsapp-inquire-btn:hover {
+      background: #1EBE5D;
+      transform: scale(1.04);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 3000;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-card {
+      background: var(--al-card);
+      border: 1px solid var(--al-border);
+      border-radius: 24px;
+      max-width: 500px;
+      width: 100%;
+      padding: 32px;
+      position: relative;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--al-text-muted);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .modal-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+    .modal-card p {
+      color: var(--al-text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--al-primary);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      background: var(--al-surface);
+      border: 1px solid var(--al-border);
+      color: #FFF;
+      padding: 12px 16px;
+      border-radius: 12px;
+      outline: none;
+      font-size: 0.95rem;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--al-primary);
+    }
+    .btn-submit-inquiry {
+      width: 100%;
+      background: linear-gradient(90deg, #00D2B4, #06B6D4);
+      color: #0A0F1D;
+      border: none;
+      padding: 14px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-submit-inquiry:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px var(--al-glow);
+    }
+
+    /* Footer */
+    .footer {
+      background: #060912;
+      border-top: 1px solid var(--al-border);
+      padding: 60px 5% 30px;
+      color: var(--al-text-muted);
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .footer-copy {
+      font-size: 0.85rem;
+      text-align: center;
+      padding-top: 20px;
+    }
+    .footer-copy strong {
+      color: var(--al-primary);
+    }
+
+    @media (max-width: 850px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      .search-filter-card {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .filter-divider {
+        display: none;
+      }
+      .nav-menu {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Agency Banner -->
+  <aside class="agency-bar" aria-label="Weblitex Agency Demo Navigation">
+    <div>
+      <i class="fas fa-gem"></i> <strong>Weblitex Showcase</strong> &bull; Apex Living Luxury Real Estate Portal Demo
+    </div>
+    <a href="index.html#projects"><i class="fas fa-arrow-left"></i> Return to Agency Website</a>
+  </aside>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="#" class="logo">
+      APEX LIVING
+      <span>Luxury Residences</span>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="#" class="active">Residences</a></li>
+      <li><a href="#featured">Penthouses</a></li>
+      <li><a href="#featured">Villas</a></li>
+      <li><a href="index.html#kontakt">Hire Weblitex</a></li>
+    </ul>
+    <button class="btn-vip" onclick="openModal('VIP Private Portfolio Access')">
+      <i class="fas fa-key"></i> Book Private Tour
+    </button>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-badge">
+      <i class="fas fa-crown"></i> Architectural Masterpieces Worldwide
+    </div>
+    <h1>The World's Most <em>Coveted</em> Living Spaces</h1>
+    <p>Discover ultra-prime penthouses, private island sanctuaries, and bespoke architectural sanctuaries tailored for the discerning few.</p>
+
+    <!-- Search Filter Bar -->
+    <div class="search-filter-card">
+      <div class="filter-group">
+        <label><i class="fas fa-location-dot"></i> Global Location</label>
+        <select id="locationSelect">
+          <option value="all">All Locations (Global)</option>
+          <option value="dubai">Dubai, UAE</option>
+          <option value="london">London, UK</option>
+          <option value="ny">Manhattan, NY</option>
+          <option value="beverly">Beverly Hills, CA</option>
+        </select>
+      </div>
+      <div class="filter-divider"></div>
+      <div class="filter-group">
+        <label><i class="fas fa-building"></i> Property Type</label>
+        <select id="typeSelect">
+          <option value="all">All Architectural Types</option>
+          <option value="penthouse">Sky Penthouse</option>
+          <option value="villa">Waterfront Villa</option>
+          <option value="estate">Hillside Modern Estate</option>
+        </select>
+      </div>
+      <div class="filter-divider"></div>
+      <div class="filter-group">
+        <label><i class="fas fa-tag"></i> Price Bracket</label>
+        <select id="priceSelect">
+          <option value="all">Any Price</option>
+          <option value="tier1">$5M – $10M</option>
+          <option value="tier2">$10M – $25M</option>
+          <option value="tier3">$25M+</option>
+        </select>
+      </div>
+      <button class="search-btn" onclick="filterProperties()">
+        <i class="fas fa-search"></i> Search Listings
+      </button>
+    </div>
+  </section>
+
+  <!-- Featured Residences Grid -->
+  <section class="properties-section" id="featured">
+    <div class="section-title-wrap">
+      <div>
+        <h2>Signature Curated Portfolio</h2>
+        <p>Interactive property viewings, direct WhatsApp concierge, and 3D architectural floor plans.</p>
+      </div>
+    </div>
+
+    <div class="properties-grid" id="propertyGrid">
+
+      <!-- Property 1 -->
+      <div class="property-card" data-location="dubai" data-type="penthouse">
+        <div class="property-thumb">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="The Lumina Penthouse, Dubai Marina">
+          <span class="property-tag">Penthouse Collection</span>
+          <span class="property-tour-badge"><i class="fas fa-cube"></i> 3D Virtual Tour</span>
+        </div>
+        <div class="property-body">
+          <div class="property-location"><i class="fas fa-map-pin"></i> Palm Jumeirah, Dubai</div>
+          <h3 class="property-title">The Lumina Horizon Triplex Penthouse</h3>
+          <div class="property-specs">
+            <span class="spec-item"><i class="fas fa-bed"></i> 5 Beds</span>
+            <span class="spec-item"><i class="fas fa-bath"></i> 7 Baths</span>
+            <span class="spec-item"><i class="fas fa-vector-square"></i> 9,450 sq ft</span>
+          </div>
+          <div class="property-footer">
+            <div class="property-price">$18,500,000</div>
+            <button class="whatsapp-inquire-btn" onclick="openModal('The Lumina Horizon Penthouse ($18.5M)')">
+              <i class="fab fa-whatsapp"></i> Inquire Direct
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property 2 -->
+      <div class="property-card" data-location="beverly" data-type="estate">
+        <div class="property-thumb">
+          <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80" alt="Bel-Air Modern Architectural Haven">
+          <span class="property-tag">Hillside Estate</span>
+          <span class="property-tour-badge"><i class="fas fa-cube"></i> 3D Virtual Tour</span>
+        </div>
+        <div class="property-body">
+          <div class="property-location"><i class="fas fa-map-pin"></i> Bel-Air, Beverly Hills, CA</div>
+          <h3 class="property-title">Villa Promontory Cantilever Estate</h3>
+          <div class="property-specs">
+            <span class="spec-item"><i class="fas fa-bed"></i> 6 Beds</span>
+            <span class="spec-item"><i class="fas fa-bath"></i> 9 Baths</span>
+            <span class="spec-item"><i class="fas fa-vector-square"></i> 14,200 sq ft</span>
+          </div>
+          <div class="property-footer">
+            <div class="property-price">$29,000,000</div>
+            <button class="whatsapp-inquire-btn" onclick="openModal('Villa Promontory Cantilever Estate ($29M)')">
+              <i class="fab fa-whatsapp"></i> Inquire Direct
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property 3 -->
+      <div class="property-card" data-location="london" data-type="penthouse">
+        <div class="property-thumb">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Mayfair Private Georgian Penthouse">
+          <span class="property-tag">Heritage Reimagined</span>
+          <span class="property-tour-badge"><i class="fas fa-cube"></i> 3D Virtual Tour</span>
+        </div>
+        <div class="property-body">
+          <div class="property-location"><i class="fas fa-map-pin"></i> Mayfair, London, UK</div>
+          <h3 class="property-title">The Grosvenor Glass Pavilion</h3>
+          <div class="property-specs">
+            <span class="spec-item"><i class="fas fa-bed"></i> 4 Beds</span>
+            <span class="spec-item"><i class="fas fa-bath"></i> 5 Baths</span>
+            <span class="spec-item"><i class="fas fa-vector-square"></i> 6,800 sq ft</span>
+          </div>
+          <div class="property-footer">
+            <div class="property-price">£14,200,000</div>
+            <button class="whatsapp-inquire-btn" onclick="openModal('The Grosvenor Glass Pavilion (£14.2M)')">
+              <i class="fab fa-whatsapp"></i> Inquire Direct
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property 4 -->
+      <div class="property-card" data-location="ny" data-type="penthouse">
+        <div class="property-thumb">
+          <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80" alt="Tribeca Architectural Loft">
+          <span class="property-tag">Bespoke Loft</span>
+          <span class="property-tour-badge"><i class="fas fa-cube"></i> 3D Virtual Tour</span>
+        </div>
+        <div class="property-body">
+          <div class="property-location"><i class="fas fa-map-pin"></i> Tribeca, New York</div>
+          <h3 class="property-title">The Franklin Sky Residence</h3>
+          <div class="property-specs">
+            <span class="spec-item"><i class="fas fa-bed"></i> 4 Beds</span>
+            <span class="spec-item"><i class="fas fa-bath"></i> 4 Baths</span>
+            <span class="spec-item"><i class="fas fa-vector-square"></i> 5,600 sq ft</span>
+          </div>
+          <div class="property-footer">
+            <div class="property-price">$16,800,000</div>
+            <button class="whatsapp-inquire-btn" onclick="openModal('The Franklin Sky Residence ($16.8M)')">
+              <i class="fab fa-whatsapp"></i> Inquire Direct
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property 5 -->
+      <div class="property-card" data-location="dubai" data-type="villa">
+        <div class="property-thumb">
+          <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80" alt="Emirates Hills Mediterranean Palace">
+          <span class="property-tag">Private Sanctuary</span>
+          <span class="property-tour-badge"><i class="fas fa-cube"></i> 3D Virtual Tour</span>
+        </div>
+        <div class="property-body">
+          <div class="property-location"><i class="fas fa-map-pin"></i> Emirates Hills, Dubai</div>
+          <h3 class="property-title">Serenity Waterside Mansion</h3>
+          <div class="property-specs">
+            <span class="spec-item"><i class="fas fa-bed"></i> 7 Beds</span>
+            <span class="spec-item"><i class="fas fa-bath"></i> 10 Baths</span>
+            <span class="spec-item"><i class="fas fa-vector-square"></i> 18,500 sq ft</span>
+          </div>
+          <div class="property-footer">
+            <div class="property-price">$34,000,000</div>
+            <button class="whatsapp-inquire-btn" onclick="openModal('Serenity Waterside Mansion ($34M)')">
+              <i class="fab fa-whatsapp"></i> Inquire Direct
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property 6 -->
+      <div class="property-card" data-location="beverly" data-type="villa">
+        <div class="property-thumb">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Trousdale Estates Modern Glass House">
+          <span class="property-tag">Mid-Century Modern</span>
+          <span class="property-tour-badge"><i class="fas fa-cube"></i> 3D Virtual Tour</span>
+        </div>
+        <div class="property-body">
+          <div class="property-location"><i class="fas fa-map-pin"></i> Trousdale, Beverly Hills</div>
+          <h3 class="property-title">The Glass Pavilion at Trousdale</h3>
+          <div class="property-specs">
+            <span class="spec-item"><i class="fas fa-bed"></i> 5 Beds</span>
+            <span class="spec-item"><i class="fas fa-bath"></i> 6 Baths</span>
+            <span class="spec-item"><i class="fas fa-vector-square"></i> 8,200 sq ft</span>
+          </div>
+          <div class="property-footer">
+            <div class="property-price">$22,500,000</div>
+            <button class="whatsapp-inquire-btn" onclick="openModal('The Glass Pavilion at Trousdale ($22.5M)')">
+              <i class="fab fa-whatsapp"></i> Inquire Direct
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive WhatsApp / Inquiry Modal -->
+  <div class="modal-overlay" id="inquiryModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h3 id="modalPropertyName">Inquire About Residence</h3>
+      <p>Direct WhatsApp &amp; Concierge consultation with an Apex Living private client advisor.</p>
+      <form onsubmit="handleInquirySubmit(event)">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="e.g. Alexander Wright" required>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp / Phone Number</label>
+          <input type="tel" placeholder="+1 (555) 000-0000" required>
+        </div>
+        <div class="form-group">
+          <label>Preferred Viewing Date or Message</label>
+          <textarea rows="3" placeholder="I would like to request private documentation and a 3D tour link."></textarea>
+        </div>
+        <button type="submit" class="btn-submit-inquiry">
+          <i class="fab fa-whatsapp"></i> Send Direct WhatsApp Inquiry
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div>
+        <h3 style="font-family:'Playfair Display', serif; color:#FFF; font-size:1.4rem;">APEX LIVING</h3>
+        <p style="font-size:0.85rem; margin-top:4px;">Premier architectural real estate portal demonstration.</p>
+      </div>
+      <div>
+        <a href="index.html#kontakt" class="btn-vip" style="font-size:0.85rem; padding:10px 20px;">
+          Build Your Custom Web App With Weblitex
+        </a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      &copy; 2026 Apex Living Demo &bull; Engineered with bespoke modern web architecture by <strong>Weblitex Agency</strong>.
+    </div>
+  </footer>
+
+  <script>
+    const inquiryModal = document.getElementById('inquiryModal');
+    const modalPropertyName = document.getElementById('modalPropertyName');
+
+    function openModal(title) {
+      modalPropertyName.textContent = title;
+      inquiryModal.classList.add('active');
+    }
+
+    function closeModal() {
+      inquiryModal.classList.remove('active');
+    }
+
+    inquiryModal.addEventListener('click', (e) => {
+      if (e.target === inquiryModal) closeModal();
+    });
+
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      alert(`💬 WhatsApp Lead Connected!\n\nYour viewing request for "${modalPropertyName.textContent}" was successfully forwarded to our VIP brokerage team via automated WhatsApp API integration.\n\nCrafted with modern web architecture by Weblitex Agency.`);
+      closeModal();
+    }
+
+    function filterProperties() {
+      const loc = document.getElementById('locationSelect').value;
+      const type = document.getElementById('typeSelect').value;
+      const cards = document.querySelectorAll('.property-card');
+      let visible = 0;
+
+      cards.forEach(card => {
+        const cardLoc = card.getAttribute('data-location');
+        const cardType = card.getAttribute('data-type');
+
+        const matchLoc = (loc === 'all' || cardLoc === loc);
+        const matchType = (type === 'all' || cardType === type);
+
+        if (matchLoc && matchType) {
+          card.style.display = 'flex';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (visible === 0) {
+        alert('No properties match this specific combination. Resetting to show all listings.');
+        document.getElementById('locationSelect').value = 'all';
+        document.getElementById('typeSelect').value = 'all';
+        cards.forEach(c => c.style.display = 'flex');
+      }
+    }
+  </script>
+</body>
+</html>

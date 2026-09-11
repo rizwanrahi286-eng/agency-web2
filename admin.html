@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — User &amp; Device Control | Weblitex</title>
+  
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A0F1D">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #070B14;
+      --bg-card: #0D1527;
+      --bg-card-hover: #131E38;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --color-brand: #00D2B4;
+      --color-brand-glow: rgba(0, 210, 180, 0.25);
+      --text-main: #FFFFFF;
+      --text-muted: #94A3B8;
+      --color-danger: #F87171;
+      --color-warning: #FBBF24;
+      --color-success: #34D399;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Outfit', 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Navigation */
+    .admin-navbar {
+      background: rgba(13, 21, 39, 0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .admin-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #FFF;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .admin-logo span {
+      color: var(--color-brand);
+    }
+    .badge-admin-tag {
+      background: rgba(0, 210, 180, 0.12);
+      border: 1px solid var(--color-brand);
+      color: var(--color-brand);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .admin-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .admin-user-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 6px 14px;
+      border-radius: 30px;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.88rem;
+    }
+    .admin-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-brand);
+      color: #070B14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .btn-action-sm {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: #CBD5E1;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-action-sm:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFF;
+    }
+
+    .btn-logout {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: rgba(239, 68, 68, 0.3);
+      color: var(--color-danger);
+    }
+    .btn-logout:hover {
+      background: rgba(239, 68, 68, 0.25);
+      color: #FFF;
+    }
+
+    /* Layout */
+    .admin-container {
+      max-width: 1350px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 28px 20px;
+      flex: 1;
+    }
+
+    /* KPI Summary Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .kpi-icon-wrap {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .kpi-icon-cyan {
+      background: rgba(0, 210, 180, 0.12);
+      color: var(--color-brand);
+    }
+    .kpi-icon-blue {
+      background: rgba(56, 189, 248, 0.12);
+      color: #38BDF8;
+    }
+    .kpi-icon-purple {
+      background: rgba(168, 85, 247, 0.12);
+      color: #C084FC;
+    }
+    .kpi-icon-amber {
+      background: rgba(251, 191, 36, 0.12);
+      color: var(--color-warning);
+    }
+
+    .kpi-info h3 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #FFF;
+    }
+    .kpi-info p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Main Grid: User Generator + WhatsApp Preview */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 992px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      position: relative;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 14px;
+    }
+    .panel-head h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .panel-head h2 i {
+      color: var(--color-brand);
+    }
+
+    /* Form Styles */
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 600px) {
+      .form-row-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .fg {
+      margin-bottom: 14px;
+    }
+    .fg label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #CBD5E1;
+      margin-bottom: 6px;
+    }
+    .fg input, .fg select {
+      width: 100%;
+      background: rgba(7, 11, 20, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 11px 14px;
+      color: #FFF;
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    .fg input:focus, .fg select:focus {
+      outline: none;
+      border-color: var(--color-brand);
+      box-shadow: 0 0 0 3px var(--color-brand-glow);
+    }
+
+    .input-with-action {
+      position: relative;
+      display: flex;
+    }
+    .input-with-action input {
+      padding-right: 95px;
+    }
+    .btn-inline-gen {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      bottom: 6px;
+      background: rgba(0, 210, 180, 0.15);
+      border: 1px solid rgba(0, 210, 180, 0.3);
+      color: var(--color-brand);
+      border-radius: 6px;
+      padding: 0 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .btn-inline-gen:hover {
+      background: var(--color-brand);
+      color: #070B14;
+    }
+
+    .btn-primary-gradient {
+      width: 100%;
+      background: linear-gradient(135deg, #00D2B4 0%, #00B4D8 100%);
+      border: none;
+      border-radius: 12px;
+      color: #070B14;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 14px;
+      cursor: pointer;
+      box-shadow: 0 4px 18px var(--color-brand-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      margin-top: 8px;
+    }
+    .btn-primary-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 210, 180, 0.45);
+    }
+
+    /* WhatsApp Template Card */
+    .whatsapp-card {
+      background: #0B1424;
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 16px;
+      padding: 18px;
+      position: relative;
+    }
+    .whatsapp-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #25D366;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+    .whatsapp-preview-box {
+      background: #060B12;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 14px;
+      font-family: 'Inter', -apple-system, monospace;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: #E2E8F0;
+      white-space: pre-wrap;
+      max-height: 280px;
+      overflow-y: auto;
+      user-select: all;
+    }
+
+    .whatsapp-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .btn-copy-wa {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFF;
+      padding: 11px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-copy-wa:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #FFF;
+    }
+
+    .btn-direct-wa {
+      background: #25D366;
+      border: none;
+      color: #070B14;
+      padding: 11px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-direct-wa:hover {
+      background: #20BA5A;
+      transform: translateY(-1px);
+    }
+
+    /* User Management Table Panel */
+    .table-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .search-input-box {
+      position: relative;
+      min-width: 260px;
+    }
+    .search-input-box input {
+      width: 100%;
+      background: rgba(7, 11, 20, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 9px 14px 9px 34px;
+      color: #FFF;
+      font-size: 0.86rem;
+    }
+    .search-input-box i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      background: #090F1E;
+    }
+
+    table.admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.87rem;
+    }
+    table.admin-table th {
+      background: rgba(13, 21, 39, 0.95);
+      color: #94A3B8;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    table.admin-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: #E2E8F0;
+      vertical-align: middle;
+    }
+    table.admin-table tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .user-name-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .user-avatar-sm {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00D2B4, #38BDF8);
+      color: #070B14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+
+    /* Device status badge */
+    .device-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .device-status-badge.bound {
+      background: rgba(52, 211, 153, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      color: #34D399;
+    }
+    .device-status-badge.unbound {
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      color: #94A3B8;
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .status-pill.active {
+      background: rgba(0, 210, 180, 0.15);
+      color: #00D2B4;
+    }
+    .status-pill.suspended {
+      background: rgba(239, 68, 68, 0.15);
+      color: #F87171;
+    }
+
+    .actions-cell {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-tbl-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: #CBD5E1;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-tbl-action:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFF;
+    }
+    .btn-tbl-reset {
+      color: #FBBF24;
+      border-color: rgba(251, 191, 36, 0.3);
+    }
+    .btn-tbl-reset:hover {
+      background: rgba(251, 191, 36, 0.15);
+      color: #FBBF24;
+    }
+    .btn-tbl-del {
+      color: #F87171;
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+    .btn-tbl-del:hover {
+      background: rgba(239, 68, 68, 0.2);
+      color: #FFF;
+    }
+
+    /* Toast Notification */
+    .toast-popup {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0D1527;
+      border: 1px solid var(--color-brand);
+      color: #FFF;
+      padding: 14px 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      z-index: 1000;
+      transform: translateY(120%);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .toast-popup.show {
+      transform: translateY(0);
+    }
+
+    /* Edit Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 500px;
+      padding: 28px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Admin Navbar -->
+  <nav class="admin-navbar">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <a href="admin.html" class="admin-logo">
+        Webli<span>tex</span>
+      </a>
+      <span class="badge-admin-tag"><i class="fas fa-lock"></i> Admin Suite</span>
+    </div>
+
+    <div class="admin-nav-actions">
+      <div class="admin-user-pill">
+        <div class="admin-avatar">R</div>
+        <span id="navAdminName">Rizwan Rahi</span>
+      </div>
+      <a href="portal.html" class="btn-action-sm" target="_blank" title="View User Portal">
+        <i class="fas fa-external-link-alt"></i> User Portal
+      </a>
+      <button onclick="handleAdminLogout()" class="btn-action-sm btn-logout" title="Log Out">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="admin-container">
+    
+    <!-- KPI Row -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap kpi-icon-cyan">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="kpi-info">
+          <h3 id="statTotalUsers">0</h3>
+          <p>Generated Accounts</p>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap kpi-icon-blue">
+          <i class="fas fa-mobile-screen-button"></i>
+        </div>
+        <div class="kpi-info">
+          <h3 id="statBoundDevices">0</h3>
+          <p>Active Device Bindings</p>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap kpi-icon-purple">
+          <i class="fas fa-shield-halved"></i>
+        </div>
+        <div class="kpi-info">
+          <h3>1 Device</h3>
+          <p>Enforced Security Policy</p>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap kpi-icon-amber">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="kpi-info">
+          <h3 id="statReadyTemplates">100%</h3>
+          <p>WhatsApp Templates Synced</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Top Grid: Generate User Form & WhatsApp Template Live Box -->
+    <div class="dashboard-grid">
+      
+      <!-- Panel 1: User & Profile Generator -->
+      <section class="panel-card">
+        <div class="panel-head">
+          <h2><i class="fas fa-user-plus"></i> Generate User Account</h2>
+          <span style="font-size:0.8rem; color:#94A3B8;">Auto-binds single-device policy</span>
+        </div>
+
+        <form id="createUserForm" onsubmit="handleCreateUser(event)">
+          
+          <div class="form-row-2">
+            <div class="fg">
+              <label>Full Name*</label>
+              <input type="text" id="newFullName" required placeholder="e.g. Hammad Sheikh" oninput="autoSuggestUsername()">
+            </div>
+            <div class="fg">
+              <label>Username*</label>
+              <div class="input-with-action">
+                <input type="text" id="newUsername" required placeholder="e.g. hammad_sheikh">
+                <button type="button" class="btn-inline-gen" onclick="autoSuggestUsername(true)" title="Auto generate username">
+                  <i class="fas fa-magic"></i> Auto
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="fg">
+              <label>Password*</label>
+              <div class="input-with-action">
+                <input type="text" id="newPassword" required placeholder="Enter or auto-generate">
+                <button type="button" class="btn-inline-gen" onclick="autoGeneratePassword()" title="Generate secure password">
+                  <i class="fas fa-key"></i> Gen
+                </button>
+              </div>
+            </div>
+            <div class="fg">
+              <label>WhatsApp / Phone Number*</label>
+              <input type="tel" id="newPhone" required placeholder="+923001234567" oninput="updateWhatsAppPreview()">
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="fg">
+              <label>Email Address</label>
+              <input type="email" id="newEmail" placeholder="client@example.com">
+            </div>
+            <div class="fg">
+              <label>Access Tier / Role</label>
+              <select id="newRole" onchange="updateWhatsAppPreview()">
+                <option value="Client Portal" selected>Client Portal (Full Project Access)</option>
+                <option value="Student Portal">Student Portal (Course Materials)</option>
+                <option value="VIP Member">VIP Client (Priority Consultation)</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary-gradient">
+            <i class="fas fa-user-check"></i> Generate User &amp; Prepare WhatsApp Message
+          </button>
+        </form>
+      </section>
+
+      <!-- Panel 2: Live WhatsApp Message Generator Box -->
+      <section class="panel-card">
+        <div class="panel-head">
+          <h2><i class="fab fa-whatsapp" style="color:#25D366;"></i> WhatsApp Template Generator</h2>
+          <span style="font-size:0.8rem; color:#25D366; font-weight:700;"><i class="fas fa-bolt"></i> Live Format</span>
+        </div>
+
+        <div class="whatsapp-card">
+          <div class="whatsapp-header-badge">
+            <i class="fab fa-whatsapp"></i> Client Ready Message:
+          </div>
+
+          <div class="whatsapp-preview-box" id="waMessagePreview">
+Fill user details on the left to preview the personalized WhatsApp template...
+          </div>
+
+          <div class="whatsapp-actions">
+            <button type="button" class="btn-copy-wa" id="btnCopyWA" onclick="copyWhatsAppMessage()">
+              <i class="fas fa-copy"></i> Copy Message
+            </button>
+            <a href="#" target="_blank" class="btn-direct-wa" id="btnSendWA" onclick="return validateAndOpenWA(event)">
+              <i class="fab fa-whatsapp"></i> Send via WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Panel 3: User Accounts & Device Bindings Table -->
+    <section class="panel-card">
+      <div class="panel-head">
+        <h2><i class="fas fa-address-book"></i> Active Accounts &amp; Device Sessions</h2>
+        <div style="display:flex; gap:10px;">
+          <button class="btn-action-sm" onclick="exportDatabaseJSON()"><i class="fas fa-download"></i> Backup JSON</button>
+        </div>
+      </div>
+
+      <div class="table-controls">
+        <div class="search-input-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Search by name, username, phone..." oninput="renderUserTable()">
+        </div>
+        <div style="font-size:0.82rem; color:#94A3B8;">
+          <i class="fas fa-circle-info" style="color:#00D2B4;"></i> Click <strong>Reset Device</strong> if a client changes their phone/PC.
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Client / User</th>
+              <th>Username &amp; Password</th>
+              <th>Phone / WhatsApp</th>
+              <th>Role</th>
+              <th>Device Binding Status</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="userTableBody">
+            <!-- Dynamic rows rendered by JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Edit User Modal -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal-box">
+      <div class="panel-head" style="margin-bottom:16px;">
+        <h2><i class="fas fa-user-edit"></i> Edit User Profile</h2>
+        <button class="btn-action-sm" onclick="closeEditModal()">&times;</button>
+      </div>
+      <form id="editUserForm" onsubmit="handleSaveUserEdit(event)">
+        <input type="hidden" id="editUserId">
+        <div class="fg">
+          <label>Full Name</label>
+          <input type="text" id="editName" required>
+        </div>
+        <div class="fg">
+          <label>Username</label>
+          <input type="text" id="editUsername" required>
+        </div>
+        <div class="fg">
+          <label>Password</label>
+          <input type="text" id="editPassword" required>
+        </div>
+        <div class="fg">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" id="editPhone">
+        </div>
+        <div class="fg">
+          <label>Role</label>
+          <select id="editRole">
+            <option value="Client Portal">Client Portal</option>
+            <option value="Student Portal">Student Portal</option>
+            <option value="VIP Member">VIP Member</option>
+          </select>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+          <button type="button" class="btn-action-sm" onclick="closeEditModal()">Cancel</button>
+          <button type="submit" class="btn-action-sm" style="background:#00D2B4; color:#070B14; font-weight:700;">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Popup -->
+  <div class="toast-popup" id="toastPopup">
+    <i class="fas fa-circle-check" style="color:#00D2B4; font-size:1.2rem;"></i>
+    <span id="toastMsg">Action completed successfully!</span>
+  </div>
+
+  <!-- Auth Engine -->
+  <script src="auth.js"></script>
+
+  <script>
+    let activeWhatsAppText = '';
+    let activeWhatsAppPhone = '';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Guard check: Must be authenticated Admin
+      const check = window.WeblitexAuth.verifySession('admin');
+      if (!check.valid) {
+        window.location.href = 'login.html?role=admin';
+        return;
+      }
+
+      document.getElementById('navAdminName').textContent = check.user.name;
+
+      // 2. Populate stats & table
+      renderDashboard();
+
+      // 3. Auto-generate initial password
+      autoGeneratePassword();
+
+      // 4. Sync multi-tab updates
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'weblitex_auth_db_v1') {
+          renderDashboard();
+        }
+      });
+    });
+
+    function renderDashboard() {
+      const db = window.WeblitexAuth.getDB();
+      const users = db.users || [];
+
+      // Stats
+      document.getElementById('statTotalUsers').textContent = users.length;
+      const boundCount = users.filter(u => u.activeDeviceId).length;
+      document.getElementById('statBoundDevices').textContent = boundCount;
+
+      renderUserTable();
+    }
+
+    function autoGeneratePassword() {
+      const pwd = window.WeblitexAuth.generateSecurePassword(10);
+      document.getElementById('newPassword').value = pwd;
+      updateWhatsAppPreview();
+    }
+
+    function autoSuggestUsername(force = false) {
+      const name = document.getElementById('newFullName').value.trim();
+      const userField = document.getElementById('newUsername');
+      if (name && (force || !userField.value)) {
+        const clean = name.toLowerCase().replace(/[^a-z0-9]/g, '_').substring(0, 15);
+        userField.value = clean + '_' + Math.floor(10 + Math.random() * 89);
+      }
+      updateWhatsAppPreview();
+    }
+
+    function updateWhatsAppPreview() {
+      const name = document.getElementById('newFullName').value.trim() || 'Client Name';
+      const username = document.getElementById('newUsername').value.trim() || 'username';
+      const password = document.getElementById('newPassword').value.trim() || 'password';
+      const role = document.getElementById('newRole').value;
+      const phone = document.getElementById('newPhone').value.trim();
+
+      const tempUser = { name, username, password, role, phone };
+      activeWhatsAppText = window.WeblitexAuth.formatWhatsAppMessage(tempUser);
+      activeWhatsAppPhone = phone.replace(/[^0-9+]/g, '');
+
+      document.getElementById('waMessagePreview').textContent = activeWhatsAppText;
+    }
+
+    function handleCreateUser(e) {
+      e.preventDefault();
+      const name = document.getElementById('newFullName').value.trim();
+      const username = document.getElementById('newUsername').value.trim();
+      const password = document.getElementById('newPassword').value.trim();
+      const phone = document.getElementById('newPhone').value.trim();
+      const email = document.getElementById('newEmail').value.trim();
+      const role = document.getElementById('newRole').value;
+
+      const res = window.WeblitexAuth.adminCreateUser({ name, username, password, phone, email, role });
+      if (res.success) {
+        showToast(`User ${username} generated! WhatsApp message ready.`);
+        activeWhatsAppText = res.waMessage;
+        activeWhatsAppPhone = phone.replace(/[^0-9+]/g, '');
+        document.getElementById('waMessagePreview').textContent = activeWhatsAppText;
+
+        // Reset inputs
+        document.getElementById('createUserForm').reset();
+        autoGeneratePassword();
+        renderDashboard();
+      } else {
+        alert(res.message);
+      }
+    }
+
+    function renderUserTable() {
+      const db = window.WeblitexAuth.getDB();
+      const query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+      const tbody = document.getElementById('userTableBody');
+      tbody.innerHTML = '';
+
+      const users = (db.users || []).filter(u => {
+        return !query || 
+               u.name.toLowerCase().includes(query) ||
+               u.username.toLowerCase().includes(query) ||
+               (u.phone && u.phone.includes(query)) ||
+               (u.email && u.email.toLowerCase().includes(query));
+      });
+
+      if (users.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:30px; color:#64748B;">No users found. Generate a user above!</td></tr>`;
+        return;
+      }
+
+      users.forEach(user => {
+        const tr = document.createElement('tr');
+        const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2) || 'U';
+        
+        let deviceBadge = '';
+        if (user.activeDeviceId) {
+          deviceBadge = `
+            <div class="device-status-badge bound" title="Device ID: ${user.activeDeviceId}">
+              <i class="fas fa-lock"></i>
+              <span>${user.activeDeviceName || 'Active Device'}</span>
+            </div>
+          `;
+        } else {
+          deviceBadge = `
+            <div class="device-status-badge unbound">
+              <i class="fas fa-unlock"></i>
+              <span>Unbound (Any 1st Device)</span>
+            </div>
+          `;
+        }
+
+        tr.innerHTML = `
+          <td>
+            <div class="user-name-cell">
+              <div class="user-avatar-sm">${initials}</div>
+              <div>
+                <strong>${user.name}</strong><br>
+                <span style="font-size:0.75rem; color:#94A3B8;">${user.email || 'No email'}</span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <code style="color:#38BDF8; font-weight:700;">${user.username}</code><br>
+            <span style="font-size:0.78rem; color:#CBD5E1; letter-spacing:0.5px;">pwd: <strong>${user.password}</strong></span>
+          </td>
+          <td>
+            <span>${user.phone || '—'}</span>
+          </td>
+          <td>
+            <span style="font-size:0.8rem; color:#A7F3D0;">${user.role}</span>
+          </td>
+          <td>
+            ${deviceBadge}
+          </td>
+          <td>
+            <span class="status-pill ${user.status}">${user.status}</span>
+          </td>
+          <td>
+            <div class="actions-cell">
+              <button class="btn-tbl-action" onclick="loadUserWhatsApp('${user.id}')" title="Copy WhatsApp Message">
+                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+              </button>
+              <button class="btn-tbl-action btn-tbl-reset" onclick="handleResetDevice('${user.id}')" title="Reset Single-Device Session (Allow new device)">
+                <i class="fas fa-rotate-left"></i> Reset Dev
+              </button>
+              <button class="btn-tbl-action" onclick="openEditModal('${user.id}')" title="Edit Profile">
+                <i class="fas fa-pen"></i>
+              </button>
+              <button class="btn-tbl-action btn-tbl-del" onclick="handleDeleteUser('${user.id}')" title="Delete User">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function loadUserWhatsApp(userId) {
+      const db = window.WeblitexAuth.getDB();
+      const user = db.users.find(u => u.id === userId);
+      if (!user) return;
+
+      activeWhatsAppText = window.WeblitexAuth.formatWhatsAppMessage(user);
+      activeWhatsAppPhone = (user.phone || '').replace(/[^0-9+]/g, '');
+      document.getElementById('waMessagePreview').textContent = activeWhatsAppText;
+      copyWhatsAppMessage();
+    }
+
+    function copyWhatsAppMessage() {
+      if (!activeWhatsAppText) {
+        alert('Please select or generate a user first.');
+        return;
+      }
+      navigator.clipboard.writeText(activeWhatsAppText).then(() => {
+        showToast('WhatsApp template copied to clipboard!');
+        const btn = document.getElementById('btnCopyWA');
+        btn.innerHTML = '<i class="fas fa-check" style="color:#00D2B4;"></i> Copied!';
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-copy"></i> Copy Message';
+        }, 2000);
+      });
+    }
+
+    function validateAndOpenWA(e) {
+      if (!activeWhatsAppText) {
+        e.preventDefault();
+        alert('Please select or generate a user first.');
+        return false;
+      }
+      let phone = activeWhatsAppPhone.replace('+', '');
+      let url = `https://wa.me/${phone}?text=${encodeURIComponent(activeWhatsAppText)}`;
+      if (!phone) {
+        url = `https://wa.me/?text=${encodeURIComponent(activeWhatsAppText)}`;
+      }
+      window.open(url, '_blank');
+      return false;
+    }
+
+    function handleResetDevice(userId) {
+      if (confirm('Reset device binding for this user? They will be able to log in from a new device.')) {
+        const res = window.WeblitexAuth.adminResetDeviceSession(userId);
+        showToast(res.message);
+        renderDashboard();
+      }
+    }
+
+    function handleDeleteUser(userId) {
+      if (confirm('Are you sure you want to permanently delete this user?')) {
+        const res = window.WeblitexAuth.adminDeleteUser(userId);
+        showToast(res.message);
+        renderDashboard();
+      }
+    }
+
+    // Modal Edit
+    function openEditModal(userId) {
+      const db = window.WeblitexAuth.getDB();
+      const user = db.users.find(u => u.id === userId);
+      if (!user) return;
+
+      document.getElementById('editUserId').value = user.id;
+      document.getElementById('editName').value = user.name;
+      document.getElementById('editUsername').value = user.username;
+      document.getElementById('editPassword').value = user.password;
+      document.getElementById('editPhone').value = user.phone || '';
+      document.getElementById('editRole').value = user.role;
+
+      document.getElementById('editModal').classList.add('active');
+    }
+
+    function closeEditModal() {
+      document.getElementById('editModal').classList.remove('active');
+    }
+
+    function handleSaveUserEdit(e) {
+      e.preventDefault();
+      const id = document.getElementById('editUserId').value;
+      const updates = {
+        name: document.getElementById('editName').value,
+        username: document.getElementById('editUsername').value,
+        password: document.getElementById('editPassword').value,
+        phone: document.getElementById('editPhone').value,
+        role: document.getElementById('editRole').value
+      };
+
+      const res = window.WeblitexAuth.adminUpdateUser(id, updates);
+      if (res.success) {
+        showToast('User profile updated successfully!');
+        closeEditModal();
+        renderDashboard();
+      } else {
+        alert(res.message);
+      }
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById('toastPopup');
+      document.getElementById('toastMsg').textContent = msg;
+      el.classList.add('show');
+      setTimeout(() => {
+        el.classList.remove('show');
+      }, 3000);
+    }
+
+    function handleAdminLogout() {
+      window.WeblitexAuth.logout();
+    }
+
+    function exportDatabaseJSON() {
+      const db = window.WeblitexAuth.getDB();
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(db, null, 2));
+      const a = document.createElement('a');
+      a.setAttribute("href", dataStr);
+      a.setAttribute("download", "weblitex_users_backup_" + new Date().toISOString().slice(0,10) + ".json");
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+  </script>
+</body>
+</html>

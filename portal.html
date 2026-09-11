@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client &amp; Student Portal — Weblitex</title>
+  
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0A0F1D">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --portal-bg: #070B14;
+      --portal-card: #0D1527;
+      --portal-card-border: rgba(255, 255, 255, 0.08);
+      --portal-accent: #00D2B4;
+    }
+
+    body.portal-body {
+      background-color: var(--portal-bg);
+      color: #FFFFFF;
+      font-family: 'Outfit', 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portal-nav {
+      background: rgba(13, 21, 39, 0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--portal-card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .portal-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #FFF;
+      text-decoration: none;
+    }
+    .portal-logo span {
+      color: var(--portal-accent);
+    }
+
+    .portal-user-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .portal-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00D2B4, #38BDF8);
+      color: #070B14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .btn-portal-logout {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #F87171;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-portal-logout:hover {
+      background: rgba(239, 68, 68, 0.25);
+      color: #FFF;
+    }
+
+    .portal-container {
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 32px 20px;
+      flex: 1;
+    }
+
+    /* Welcome Banner */
+    .portal-welcome-card {
+      background: linear-gradient(135deg, rgba(13, 21, 39, 0.9) 0%, rgba(19, 30, 56, 0.8) 100%);
+      border: 1px solid rgba(0, 210, 180, 0.25);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 28px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .welcome-text h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 6px;
+    }
+    .welcome-text h1 span {
+      color: var(--portal-accent);
+    }
+    .welcome-text p {
+      color: #94A3B8;
+      font-size: 0.95rem;
+    }
+
+    .role-badge-large {
+      background: rgba(0, 210, 180, 0.12);
+      border: 1px solid var(--portal-accent);
+      color: var(--portal-accent);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Security Status Bar */
+    .security-status-bar {
+      background: rgba(52, 211, 153, 0.08);
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      border-radius: 12px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .security-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: #CBD5E1;
+    }
+    .security-info i {
+      color: #34D399;
+      font-size: 1.2rem;
+    }
+    .security-info strong {
+      color: #34D399;
+    }
+
+    /* Portal Content Sections */
+    .portal-grid-2 {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 900px) {
+      .portal-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card-box {
+      background: var(--portal-card);
+      border: 1px solid var(--portal-card-border);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      margin-bottom: 24px;
+    }
+    .card-box h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #FFF;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--portal-card-border);
+      padding-bottom: 12px;
+    }
+    .card-box h2 i {
+      color: var(--portal-accent);
+    }
+
+    .project-milestone-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+    .milestone-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(0, 210, 180, 0.1);
+      color: var(--portal-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .milestone-details h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFF;
+      margin-bottom: 4px;
+    }
+    .milestone-details p {
+      font-size: 0.82rem;
+      color: #94A3B8;
+      line-height: 1.4;
+    }
+
+    .profile-meta-list {
+      list-style: none;
+    }
+    .profile-meta-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.88rem;
+    }
+    .profile-meta-list li:last-child {
+      border-bottom: none;
+    }
+    .meta-label {
+      color: #94A3B8;
+    }
+    .meta-value {
+      font-weight: 600;
+      color: #FFF;
+    }
+
+    .btn-wa-support {
+      width: 100%;
+      background: #25D366;
+      color: #070B14;
+      border: none;
+      padding: 13px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      margin-top: 14px;
+    }
+    .btn-wa-support:hover {
+      background: #20BA5A;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="portal-body">
+
+  <!-- Top Navbar -->
+  <nav class="portal-nav">
+    <a href="index.html" class="portal-logo">
+      Webli<span>tex</span> Portal
+    </a>
+    
+    <div class="portal-user-badge">
+      <div class="portal-avatar" id="avatarLetter">U</div>
+      <div style="text-align:right;">
+        <strong id="topBarName" style="font-size:0.9rem; display:block;">User</strong>
+        <span id="topBarUsername" style="font-size:0.75rem; color:#94A3B8;">@username</span>
+      </div>
+      <button onclick="handleUserLogout()" class="btn-portal-logout" title="Sign Out">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="portal-container">
+    
+    <!-- Welcome Header -->
+    <section class="portal-welcome-card">
+      <div class="welcome-text">
+        <h1>Welcome, <span id="welcomeUserName">Client</span>!</h1>
+        <p>Your dedicated Weblitex digital workspace and deliverables hub.</p>
+      </div>
+      <div class="role-badge-large" id="badgeRole">
+        <i class="fas fa-shield-halved"></i>
+        <span id="roleText">Client Portal</span>
+      </div>
+    </section>
+
+    <!-- Strict Single-Device Status Indicator -->
+    <section class="security-status-bar">
+      <div class="security-info">
+        <i class="fas fa-circle-check"></i>
+        <div>
+          <span>Security Protocol: <strong>Single-Device Protected</strong></span><br>
+          <span style="font-size:0.78rem; color:#94A3B8;">This session is bound to your current device: <span id="currentDeviceLabel" style="color:#FFF;">Detecting...</span></span>
+        </div>
+      </div>
+      <div style="font-size:0.75rem; color:#94A3B8; background:rgba(0,0,0,0.3); padding:4px 10px; border-radius:6px;">
+        <i class="fas fa-lock"></i> Auto Lockout Active
+      </div>
+    </section>
+
+    <!-- Content Grid -->
+    <div class="portal-grid-2">
+      
+      <!-- Col 1: Active Roadmaps & Deliverables -->
+      <div>
+        <div class="card-box">
+          <h2><i class="fas fa-layer-group"></i> Active Project &amp; Services Hub</h2>
+          
+          <div class="project-milestone-item">
+            <div class="milestone-icon"><i class="fas fa-code"></i></div>
+            <div class="milestone-details">
+              <h4>Custom Web Architecture &amp; High-Speed Deployment</h4>
+              <p>Your bespoke development environment has been deployed on high-speed cloud edge servers with 99.9% uptime.</p>
+            </div>
+          </div>
+
+          <div class="project-milestone-item">
+            <div class="milestone-icon"><i class="fas fa-lock"></i></div>
+            <div class="milestone-details">
+              <h4>Single-Device Hardened Authentication</h4>
+              <p>Real-time session lock active. If any other device attempts login, this device triggers auto-protection.</p>
+            </div>
+          </div>
+
+          <div class="project-milestone-item">
+            <div class="milestone-icon"><i class="fas fa-headset"></i></div>
+            <div class="milestone-details">
+              <h4>Dedicated Lead Engineer Consultation</h4>
+              <p>Direct priority WhatsApp &amp; Concierge engineering support with Rizwan Rahi.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-box">
+          <h2><i class="fas fa-bell"></i> Official Announcements</h2>
+          <p style="font-size:0.88rem; color:#CBD5E1; line-height:1.6;">
+            Welcome to the new Weblitex unified portal! All project updates, invoices, and course materials are synchronized here. For assistance or device change requests, reach out directly to your account administrator.
+          </p>
+        </div>
+      </div>
+
+      <!-- Col 2: Profile Overview & Support -->
+      <div>
+        <div class="card-box">
+          <h2><i class="fas fa-id-card"></i> Account Details</h2>
+          <ul class="profile-meta-list">
+            <li>
+              <span class="meta-label">Full Name</span>
+              <span class="meta-value" id="metaFullName">—</span>
+            </li>
+            <li>
+              <span class="meta-label">Username</span>
+              <span class="meta-value" style="color:#38BDF8;" id="metaUsername">—</span>
+            </li>
+            <li>
+              <span class="meta-label">Phone / WA</span>
+              <span class="meta-value" id="metaPhone">—</span>
+            </li>
+            <li>
+              <span class="meta-label">Email</span>
+              <span class="meta-value" id="metaEmail">—</span>
+            </li>
+            <li>
+              <span class="meta-label">Account Status</span>
+              <span class="meta-value" style="color:#00D2B4;"><i class="fas fa-check-circle"></i> Active</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-box" style="text-align:center;">
+          <h2 style="justify-content:center;"><i class="fab fa-whatsapp" style="color:#25D366;"></i> Concierge Support</h2>
+          <p style="font-size:0.84rem; color:#94A3B8; margin-bottom:12px;">
+            Need to reset your device or discuss a project milestone? Talk directly with our senior agency lead on WhatsApp.
+          </p>
+          <a href="https://wa.me/923294590286?text=Hi%20Rizwan%2C%20I%20am%20logged%20into%20Weblitex%20Portal%20and%20need%20assistance." target="_blank" class="btn-wa-support">
+            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer style="text-align:center; padding:20px; font-size:0.8rem; color:#475569;">
+    &copy; 2026 Weblitex Agency &bull; Authenticated Single-Device Portal
+  </footer>
+
+  <!-- Auth Engine -->
+  <script src="auth.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Strict Session Verification on Load
+      verifyUserSession();
+
+      // 2. Realtime Multi-Tab / Multi-Device Cross-Check
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'weblitex_auth_db_v1' || e.key === 'weblitex_active_session') {
+          verifyUserSession();
+        }
+      });
+
+      // 3. Heartbeat check every 3 seconds for strict single-device protection
+      setInterval(verifyUserSession, 3000);
+    });
+
+    function verifyUserSession() {
+      if (!window.WeblitexAuth) return;
+
+      const check = window.WeblitexAuth.verifySession();
+      if (!check.valid) {
+        if (check.reason === 'device_conflict') {
+          alert('Security Alert: Your account was logged in from another device or reset by Admin. Single-device policy is strictly enforced. You have been logged out.');
+          window.location.href = 'login.html?alert=kickout';
+        } else {
+          window.location.href = 'login.html';
+        }
+        return;
+      }
+
+      // If logged in as admin, redirect to admin dashboard
+      if (check.session.role === 'admin') {
+        window.location.href = 'admin.html';
+        return;
+      }
+
+      // Populate user info
+      const user = check.user;
+      document.getElementById('welcomeUserName').textContent = user.name;
+      document.getElementById('topBarName').textContent = user.name;
+      document.getElementById('topBarUsername').textContent = '@' + user.username;
+      document.getElementById('metaFullName').textContent = user.name;
+      document.getElementById('metaUsername').textContent = user.username;
+      document.getElementById('metaPhone').textContent = user.phone || 'Not provided';
+      document.getElementById('metaEmail').textContent = user.email || 'Not provided';
+      document.getElementById('roleText').textContent = user.role;
+
+      const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2) || 'U';
+      document.getElementById('avatarLetter').textContent = initials;
+
+      const devName = window.WeblitexAuth.getDeviceReadableName();
+      document.getElementById('currentDeviceLabel').textContent = devName;
+    }
+
+    function handleUserLogout() {
+      window.WeblitexAuth.logout();
+    }
+  </script>
+</body>
+</html>
